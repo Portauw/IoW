@@ -14,13 +14,6 @@ class EnvironmentSensor(Process, EdgiseBase):
         self._config: dict = config
         self._output_q: Queue = output_q
 
-        self._bus = smbus2.SMBus(self._config["port"])
-        self._address = self._config["Address"]
-        try:
-            bme280.load_calibration_params(self._bus, )
-        except:  # noqa: E722
-            pass
-
         Process.__init__(self)
         EdgiseBase.__init__(self, name="Environment Sensor", logging_q=logging_q)
 
