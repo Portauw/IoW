@@ -2,8 +2,6 @@
 
 import os
 from src.update import UpdateWatcher
-from src.ai import VideoProcessor
-from src.display_sync import DisplayUpdater
 from src.registration import RegisterProcess
 from src.uploader import UploaderProcess
 from src.edgise_mqtt import EdgiseMQTT
@@ -136,32 +134,6 @@ class Handler(EdgiseBase):
                                           )
         self._services.append(self._wf_sensor)
 
-        # Initialize AI
-        self.video_processor = VideoProcessor(stop_event=self._stop_event,
-                                              data_q=self._data_q,
-                                              cmd_q=self._cmd_q_video_processor,
-                                              logging_q=self._logging_q,
-                                              mqtt_send_q=self._mqtt_send_q)
-
-        self._services.append(self.video_processor)
-
-        def _detect_coral_dev_board() -> bool:
-            try:
-                if 'MX8MQ' in open('/sys/firmware/devicetree/base/model').read():
-                    self.info('Detected Edge TPU dev board.')
-                    return True
-            except:
-                pass
-            return False
-
-        if not _detect_coral_dev_board():
-            # Initialize Display sync
-            self.display_updater = DisplayUpdater(stop_event=self._stop_event,
-                                                  data_q=self._data_q,
-                                                  logging_q=self._logging_q)
-
-            self._services.append(self.display_updater)
-
         # Initialze MQTT process
         self.edgise_mqtt = EdgiseMQTT(stop_event=self._stop_event,
                                       data_q=self._data_q,
@@ -214,7 +186,6 @@ class Handler(EdgiseBase):
         while True:
             cmd = ""
             try:
-                self.state_process._state.fps = self.video_processor._fps
                 cmd = self._cmd_q_main_process.get_nowait()
             except queue.Empty:
                 pass
