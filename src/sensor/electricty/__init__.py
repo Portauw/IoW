@@ -4,6 +4,7 @@ from src.base import EdgiseBase
 import time
 import grovepi
 
+
 class ACSensor(Process, EdgiseBase):
     def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config: dict):
         self._stop_event = stop_event
@@ -15,8 +16,8 @@ class ACSensor(Process, EdgiseBase):
         self.RMS_voltage = 230
 
         Process.__init__(self)
-        EdgiseBase.__init__(self, name=self._config["name"], logging_q=logging_q)
-        grovepi.pinMode(self._config["Pin"], self._config["Type"])
+        EdgiseBase.__init__(self, name=self._config['name'], logging_q=logging_q)
+        grovepi.pinMode(self._config['Pin'], self._config['Type'])
 
         # config = {
         #           "name":str
