@@ -137,8 +137,7 @@ class Handler(EdgiseBase):
         # Initialze MQTT process
         self.edgise_mqtt = EdgiseMQTT(stop_event=self._stop_event,
                                       data_q=self._data_q,
-                                      cmd_qs=[self._cmd_q_video_processor,
-                                              self._cmd_q_update_watcher,
+                                      cmd_qs=[self._cmd_q_update_watcher,
                                               self._cmd_q_main_process],
                                       send_q=self._mqtt_send_q,
                                       logging_q=self._logging_q)
