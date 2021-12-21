@@ -12,7 +12,7 @@ class VibrationSensor(Process, EdgiseBase):
         self._config: dict = config
         self._output_q: Queue = output_q
 
-        Process.__init__(self, self._config["name"])
+        Process.__init__(self)
         EdgiseBase.__init__(self, name=self._config["name"], logging_q=logging_q)
         grovepi.pinMode(self._config["Pin"], self._config["Type"])
         # config = {

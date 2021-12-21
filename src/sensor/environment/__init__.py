@@ -21,7 +21,7 @@ class EnvironmentSensor(Process, EdgiseBase):
         except:  # noqa: E722
             pass
 
-        Process.__init__(self, self._config["name"])
+        Process.__init__(self)
         EdgiseBase.__init__(self, name=self._config["name"], logging_q=logging_q)
 
     def read_sensor(self):
