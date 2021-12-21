@@ -114,25 +114,25 @@ class Handler(EdgiseBase):
                                                  )
         self._services.append(self._vibration_sensor)
 
-        # Queues for  sensor
-        self._input_wf_q = Queue()
-        self._output_wf_q = Queue()
-
-        # connect waterflow sensor to analog port
-        wf_sensor_config = {
-            "name": "Waterflow sensor",
-            "Pin": "0",
-            "Type": "INPUT",
-            "Unit": "MHz",
-        }
-
-        self._wf_sensor = WaterflowSensor(stop_event=self._stop_event,
-                                          logging_q=self._logging_q,
-                                          input_q=self._input_wf_q,
-                                          output_q=self._output_wf_q,
-                                          config=wf_sensor_config
-                                          )
-        self._services.append(self._wf_sensor)
+        # # Queues for  sensor
+        # self._input_wf_q = Queue()
+        # self._output_wf_q = Queue()
+        #
+        # # connect waterflow sensor to analog port
+        # wf_sensor_config = {
+        #     "name": "Waterflow sensor",
+        #     "Pin": "0",
+        #     "Type": "INPUT",
+        #     "Unit": "MHz",
+        # }
+        #
+        # self._wf_sensor = WaterflowSensor(stop_event=self._stop_event,
+        #                                   logging_q=self._logging_q,
+        #                                   input_q=self._input_wf_q,
+        #                                   output_q=self._output_wf_q,
+        #                                   config=wf_sensor_config
+        #                                   )
+        # self._services.append(self._wf_sensor)
 
         # Initialze MQTT process
         self.edgise_mqtt = EdgiseMQTT(stop_event=self._stop_event,
