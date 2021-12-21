@@ -16,7 +16,7 @@ class ACSensor(Process, EdgiseBase):
         self.RMS_voltage = 230
 
         Process.__init__(self)
-        EdgiseBase.__init__(self, nae="Electricity sensor", logging_q=logging_q)
+        EdgiseBase.__init__(self, name="Electricity sensor", logging_q=logging_q)
         grovepi.pinMode(self._config['Pin'], self._config['Type'])
 
         # config = {
