@@ -17,7 +17,6 @@ class ACSensor(Process, EdgiseBase):
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name="Electricity sensor", logging_q=logging_q)
-        grovepi.pinMode(self._config['Pin'], self._config['Type'])
 
         # config = {
         #           "name":str
@@ -42,6 +41,8 @@ class ACSensor(Process, EdgiseBase):
 
     def run(self) -> None:
         self.info("Starting AC sensor")
+        grovepi.pinMode(self._config['Pin'], self._config['Type'])
+
         while not self._stop_event.is_set():
             if not self._input_q.empty():
                 measurement_dict = self._input_q.get_nowait()
