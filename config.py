@@ -39,7 +39,7 @@ class Config:
         self.screenLogRateLimiter: int = 20
 
         self.topicPrefix: str = "/"
-        self.platformApiUrl: str = "https://platform.edgise.com/api/"
+        self.platformApiUrl: str = "https://platform-test.edgise.com/api/"
         self.uploaderInterval: float = 2
 
         self.main_filename: str = "main.py"
