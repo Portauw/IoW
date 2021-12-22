@@ -28,11 +28,11 @@ class ACSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = grovepi.analogRead(self._config['Pin'])
+        sensor_value = grovepi.analogRead(self.Pin)
         return sensor_value
 
     def amplitude_current(self, sensor_value):
-        return float(sensor_value / 1024 * self._config["VCC"] / 800 * 2000000)
+        return float(sensor_value / 1024 * self.VCC / 800 * 2000000)
 
     def RMS_current(self, amplitude_current):
         return amplitude_current / sqrt(2)
@@ -42,7 +42,7 @@ class ACSensor(Process, EdgiseBase):
 
     def run(self) -> None:
         self.info("Starting AC sensor")
-        grovepi.pinMode(self._config['Pin'], self._config['Type'])
+        grovepi.pinMode(self.Pin, self.Type)
 
         while not self._stop_event.is_set():
             if not self._input_q.empty():
@@ -58,5 +58,5 @@ class ACSensor(Process, EdgiseBase):
                     'RMSCurrent': rms_current,
                     'AVGPower': avg_power
                 }
-                measurement_dict[self._config['name']] = measurement
+                measurement_dict[self.name] = measurement
                 self._output_q.put_nowait(measurement_dict)

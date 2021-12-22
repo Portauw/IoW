@@ -24,8 +24,8 @@ class EnvironmentSensor(Process, EdgiseBase):
     def run(self) -> None:
         self.info("Starting vibration sensor")
 
-        self._bus = smbus2.SMBus(self._config['port'])
-        self._address = self._config['Address']
+        self._bus = smbus2.SMBus(self.Port)
+        self._address = self.Address
         try:
             bme280.load_calibration_params(self._bus, self._address)
         except:  # noqa: E722
@@ -42,5 +42,5 @@ class EnvironmentSensor(Process, EdgiseBase):
                     "Pressure": raw_val.pressure,
                     "Humidity": raw_val.humidity
                 }
-                measurement_dict[self._config['name']] = measurement
+                measurement_dict[self.name] = measurement
                 self._output_q.put_nowait(measurement_dict)

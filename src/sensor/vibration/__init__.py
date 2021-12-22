@@ -23,12 +23,12 @@ class VibrationSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = grovepi.analogRead(self._config['Pin'])
+        sensor_value = grovepi.analogRead(self.Pin)
         return sensor_value
 
     def run(self) -> None:
         self.info("Starting vibration sensor")
-        grovepi.pinMode(self._config['Pin'], self._config['Type'])
+        grovepi.pinMode(self.Pin, self.Type)
 
         while not self._stop_event.is_set():
             if not self._input_q.empty():
@@ -38,5 +38,5 @@ class VibrationSensor(Process, EdgiseBase):
                 measurement = {
                     'RawVal': raw_val,
                 }
-                measurement_dict[self._config['name']] = measurement
+                measurement_dict[self.name] = measurement
                 self._output_q.put_nowait(measurement_dict)
