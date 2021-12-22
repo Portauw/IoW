@@ -14,7 +14,7 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
         self._config = config_list
-        self.info("{}".format(self._config))
+        self.info("{} -  type {}".format(self._config, type(config)))
         # for key, val in kwargs.items():
         #     self.info("key: {} - value: {}".format(key,val))
         #     setattr(self, key, val)
@@ -45,6 +45,7 @@ class ACSensor(Process, EdgiseBase):
 
     def run(self) -> None:
         self.info("Starting AC sensor")
+        print(type(self._config)
         self._config.append(2)
         for i in self._config:
             print(i)
