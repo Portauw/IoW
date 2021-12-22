@@ -8,7 +8,7 @@ import grovepi
 
 
 class ACSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_json:str, **kwargs):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_json:str, test_dict,**kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
@@ -16,7 +16,7 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
         self._config_json: str = config_json
-        self._test_dict = json.loads(config_json)
+        self._test_dict = test_dict
         self.info("{} -  type {}".format(self._config_json, type(self._config_json)))
         self.info("{} -  type {}".format(self._test_dict, type(self._test_dict)))
         # for key, val in kwargs.items():

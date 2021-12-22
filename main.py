@@ -73,7 +73,8 @@ class Handler(EdgiseBase):
                                    logging_q=self._logging_q,
                                    input_q=self._input_ac_q,
                                    output_q=self._output_ac_q,
-                                   config_json=config_json
+                                   config_json=config_json,
+                                   test_dict=AC_sensor_config
                                    )
         self._services.append(self._ac_sensor)
 
