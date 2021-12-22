@@ -51,6 +51,7 @@ class ACSensor(Process, EdgiseBase):
         self.info("Starting AC sensor")
         print(type(self._config_json))
         print(type(self._test_dict))
+        print(self._test_dict['name'])
         config = json.loads(self._config_json)
         print(type(config))
         for k,v in config.items():
