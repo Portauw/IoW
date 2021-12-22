@@ -6,14 +6,15 @@ import grovepi
 
 
 class ACSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, **config: dict):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
-        self._config: dict = config
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
+        for key, val in kwargs.items():
+            setattr(self, key, val)
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name="Electricity sensor", logging_q=logging_q)

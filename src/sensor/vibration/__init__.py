@@ -3,17 +3,18 @@ from multiprocessing import Process, Event, Queue
 from src.base import EdgiseBase
 import grovepi
 
+
 class VibrationSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, **config: dict):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
-        self._config: dict = config
-        self._output_q: Queue = output_q
+        for key, val in kwargs.items():
+            setattr(self, key, val)
 
         Process.__init__(self)
-        EdgiseBase.__init__(self, name="Vibration sensor", logging_q=logging_q)
+        EdgiseBase.__init__(self, name=self.name, logging_q=logging_q)
         # config = {
         #           "PINNR":int,
         #           "SensorI    bD":int,
@@ -39,4 +40,3 @@ class VibrationSensor(Process, EdgiseBase):
                 }
                 measurement_dict[self._config['name']] = measurement
                 self._output_q.put_nowait(measurement_dict)
-

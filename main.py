@@ -69,7 +69,7 @@ class Handler(EdgiseBase):
                                    logging_q=self._logging_q,
                                    input_q=self._input_ac_q,
                                    output_q=self._output_ac_q,
-                                   config=self.AC_sensor_config
+                                   kwargs=self.AC_sensor_config
                                    )
         self._services.append(self._ac_sensor)
 
@@ -90,7 +90,7 @@ class Handler(EdgiseBase):
                                                      logging_q=self._logging_q,
                                                      input_q=self._input_env_q,
                                                      output_q=self._output_env_q,
-                                                     config=self.env_sensor_config
+                                                     kwargs=self.env_sensor_config
                                                      )
         self._services.append(self._environment_sensor)
 
@@ -110,7 +110,7 @@ class Handler(EdgiseBase):
                                                  logging_q=self._logging_q,
                                                  input_q=self._input_vibration_q,
                                                  output_q=self._output_vibration_q,
-                                                 config=self._vibration_sensor_config
+                                                 kwargs=self._vibration_sensor_config
                                                  )
         self._services.append(self._vibration_sensor)
 

@@ -6,13 +6,14 @@ import bme280
 
 
 class EnvironmentSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, **config: dict):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
-        self._config: dict = config
         self._output_q: Queue = output_q
+        for key, val in kwargs.items():
+            setattr(self, key, val)
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name="Environment Sensor", logging_q=logging_q)
