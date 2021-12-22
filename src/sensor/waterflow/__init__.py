@@ -4,7 +4,7 @@ from src.base import EdgiseBase
 
 
 class WaterflowSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, name: str, config: dict):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, name: str, **config: dict):
         self._sensor_name: str = name
         self._config:dict = config
         self._logging_q: Queue = logging_q

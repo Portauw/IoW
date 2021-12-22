@@ -6,7 +6,7 @@ import grovepi
 
 
 class ACSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config: dict):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, **config: dict):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
