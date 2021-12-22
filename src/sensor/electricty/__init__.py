@@ -66,5 +66,5 @@ class ACSensor(Process, EdgiseBase):
                     'RMSCurrent': rms_current,
                     'AVGPower': avg_power
                 }
-                measurement_dict[self._config['name']] = measurement
-                self._output_q.put_nowait(measurement_dict)
+                #measurement_dict[self._config['name']] = measurement
+                #self._output_q.put_nowait(measurement_dict)
