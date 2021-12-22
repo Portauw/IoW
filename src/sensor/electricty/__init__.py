@@ -30,9 +30,9 @@ class ACSensor(Process, EdgiseBase):
         #           "SensorType":""
         #           }
 
-    def read_sensor(self):
-        sensor_value = grovepi.analogRead(self._config['pin'])
-        return sensor_value
+    # def read_sensor(self):
+    #     sensor_value = grovepi.analogRead(self._config['pin'])
+    #     return sensor_value
 
     def amplitude_current(self, sensor_value):
         return float(sensor_value / 1024 * self.VCC / 800 * 2000000)
@@ -50,7 +50,7 @@ class ACSensor(Process, EdgiseBase):
         for i in self._config:
             print(i)
         #self.info("config: {}".format(self._config))
-        grovepi.pinMode(self._config['pin'], self._config['type'])
+        #grovepi.pinMode(self._config['pin'], self._config['type'])
 
         while not self._stop_event.is_set():
             if not self._input_q.empty():
