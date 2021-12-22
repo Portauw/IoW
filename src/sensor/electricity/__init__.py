@@ -8,7 +8,7 @@ import grovepi
 
 
 class ACSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_json:str, test_dict, **kwargs):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_json:str, config_dict, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
@@ -16,7 +16,7 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
         self._config_json: str = config_json
-        self._config_dict = test_dict
+        self._config_dict = config_dict
         self.info("{} -  type {}".format(self._config_json, type(self._config_json)))
         #self.info("{} -  type {}".format(self._test_dict, type(self._test_dict)))
         # for key, val in kwargs.items():
@@ -24,7 +24,7 @@ class ACSensor(Process, EdgiseBase):
         #     setattr(self, key, val)
         grovepi.pinMode(self._config_dict['pin'], self._config_dict['type'])
         Process.__init__(self, name="Ac")
-        EdgiseBase.__init__(self, name="Electricity sensor", logging_q=logging_q)
+        EdgiseBase.__init__(self, name=self._config_dict['name'], logging_q=logging_q)
 
         # config = {
         #           "name":str
@@ -56,8 +56,6 @@ class ACSensor(Process, EdgiseBase):
         print(type(config))
         for k,v in config.items():
             print(v)
-        #self.info("config: {}".format(self._config))
-        grovepi.pinMode(self._config['pin'], self._config['type'])
 
         while not self._stop_event.is_set():
             if not self._input_q.empty():
