@@ -71,7 +71,7 @@ class Handler(EdgiseBase):
                                    logging_q=self._logging_q,
                                    input_q=self._input_ac_q,
                                    output_q=self._output_ac_q,
-                                   kwargs=config_list
+                                   config_list=config_list
                                    )
         self._services.append(self._ac_sensor)
 
