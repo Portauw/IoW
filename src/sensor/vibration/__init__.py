@@ -33,6 +33,7 @@ class VibrationSensor(Process, EdgiseBase):
                 measurement_dict = self._input_q.get_nowait()
 
                 raw_val = self.read_sensor()
+                self.info("Raw Value Vibration: {}".format(raw_val))
                 measurement = {
                     'RawVal': raw_val,
                 }

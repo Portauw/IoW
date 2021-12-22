@@ -62,9 +62,14 @@ class ACSensor(Process, EdgiseBase):
                 measurement_dict = self._input_q.get_nowait()
 
                 raw_val = self.read_sensor()
+                self.info("Raw Value: {}".format(raw_val))
                 amplitude_current = self.amplitude_current(raw_val)
+                self.info("A I Value: {}".format(amplitude_current))
                 rms_current = self.RMS_current(amplitude_current)
+                self.info("RMS I Value: {}".format(rms_current))
                 avg_power = self.avg_power_consumption(rms_current)
+                self.info("AVG W Value: {}".format(avg_power))
+
                 measurement = {
                     'RawVal': raw_val,
                     'CurrentAmp': amplitude_current,

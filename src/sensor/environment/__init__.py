@@ -35,7 +35,10 @@ class EnvironmentSensor(Process, EdgiseBase):
                 measurement_dict = self._input_q.get_nowait()
 
                 raw_val = self.read_sensor()
-                self.info(raw_val)
+                self.info("Temperature: {}".format(raw_val.temperature))
+                self.info("Pressure: {}".format(raw_val.pressure))
+                self.info("Humidity: {}".format(raw_val.humidity))
+
                 measurement = {
                     "Temperature": raw_val.temperature,
                     "Pressure": raw_val.pressure,
