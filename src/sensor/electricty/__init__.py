@@ -48,9 +48,10 @@ class ACSensor(Process, EdgiseBase):
     def run(self) -> None:
         self.info("Starting AC sensor")
         print(type(self._config))
-        self._config.append(2)
-        for i in self._config:
-            print(i)
+        config = json.loads(self._config)
+
+        for k,v in config:
+            print(v)
         #self.info("config: {}".format(self._config))
         #grovepi.pinMode(self._config['pin'], self._config['type'])
 
