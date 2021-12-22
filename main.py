@@ -20,6 +20,7 @@ from multiprocessing import Queue, Process
 from multiprocessing import Event as mpEvent
 from src.base import EdgiseBase
 from typing import List
+import json
 
 
 class Handler(EdgiseBase):
@@ -64,16 +65,15 @@ class Handler(EdgiseBase):
             'type': "INPUT",
             'unit': "mA",
         }
-        test = 1
-        print(type(test))
-        config_list = [test]
-        print(type(config_list))
+
+        config_json = json.dumps(AC_sensor_config)
+        #print(type(config_list))
 
         self._ac_sensor = ACSensor(stop_event=self._stop_event,
                                    logging_q=self._logging_q,
                                    input_q=self._input_ac_q,
                                    output_q=self._output_ac_q,
-                                   config_list=config_list
+                                   config_json=config_json
                                    )
         self._services.append(self._ac_sensor)
 
