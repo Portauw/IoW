@@ -66,8 +66,7 @@ class Handler(EdgiseBase):
         }
         test = 1
         print(type(test))
-        config_list =[]
-        config_list.append(test)
+        config_list = [test]
         print(type(config_list))
 
         self._ac_sensor = ACSensor(stop_event=self._stop_event,
