@@ -45,7 +45,7 @@ class ACSensor(Process, EdgiseBase):
 
     def run(self) -> None:
         self.info("Starting AC sensor")
-        print(type(self._config)
+        print(type(self._config))
         self._config.append(2)
         for i in self._config:
             print(i)
