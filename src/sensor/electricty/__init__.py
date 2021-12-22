@@ -15,7 +15,7 @@ class ACSensor(Process, EdgiseBase):
         self.RMS_voltage = 230
        # self._config = list(kwargs.values())[0]
 
-        self.info("{}".format(self._config))
+       # self.info("{}".format(self._config))
         for key, val in kwargs.items():
             self.info("key: {} - value: {}".format(key,val))
             setattr(self, key, val)
