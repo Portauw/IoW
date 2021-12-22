@@ -45,7 +45,10 @@ class ACSensor(Process, EdgiseBase):
 
     def run(self) -> None:
         self.info("Starting AC sensor")
-        self.info("config: {}".format(self._config))
+        self._config.append(2)
+        for i in self._config:
+            print(i)
+        #self.info("config: {}".format(self._config))
         grovepi.pinMode(self._config['pin'], self._config['type'])
 
         while not self._stop_event.is_set():
