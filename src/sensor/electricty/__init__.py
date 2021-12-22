@@ -18,7 +18,7 @@ class ACSensor(Process, EdgiseBase):
         # for key, val in kwargs.items():
         #     self.info("key: {} - value: {}".format(key,val))
         #     setattr(self, key, val)
-         self.info("{}".format(self._config))
+        self.info("{}".format(self._config))
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name="Electricity sensor", logging_q=logging_q)
