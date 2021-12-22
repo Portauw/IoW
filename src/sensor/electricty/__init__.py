@@ -13,7 +13,7 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
-        self._config = kwargs['kwargs']
+        self._config = frozenset(kwargs['kwargs'])
 
         self.info("{}".format(self._config))
         for key, val in kwargs.items():
