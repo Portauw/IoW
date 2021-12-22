@@ -19,7 +19,6 @@ class ACSensor(Process, EdgiseBase):
         # for key, val in kwargs.items():
         #     self.info("key: {} - value: {}".format(key,val))
         #     setattr(self, key, val)
-        self.info("{}".format(self._config))
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name="Electricity sensor", logging_q=logging_q)
@@ -47,6 +46,7 @@ class ACSensor(Process, EdgiseBase):
 
     def run(self) -> None:
         self.info("Starting AC sensor")
+        self.info("config: {}".format(self._config))
         grovepi.pinMode(self._config['pin'], self._config['type'])
 
         while not self._stop_event.is_set():
