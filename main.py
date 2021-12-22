@@ -65,11 +65,13 @@ class Handler(EdgiseBase):
             'unit': "mA",
         }
 
+        config_list =[]
+        config_list.append(AC_sensor_config)
         self._ac_sensor = ACSensor(stop_event=self._stop_event,
                                    logging_q=self._logging_q,
                                    input_q=self._input_ac_q,
                                    output_q=self._output_ac_q,
-                                   kwargs=AC_sensor_config
+                                   kwargs=config_list
                                    )
         self._services.append(self._ac_sensor)
 
