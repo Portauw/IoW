@@ -58,7 +58,7 @@ class Handler(EdgiseBase):
         self._output_ac_q = Queue()
 
         # connect AC sensor to analog port A0
-        self.AC_sensor_config = {
+        AC_sensor_config = {
             'name': "Electricity sensor",
             'pin': 0,
             'type': "INPUT",
@@ -69,7 +69,7 @@ class Handler(EdgiseBase):
                                    logging_q=self._logging_q,
                                    input_q=self._input_ac_q,
                                    output_q=self._output_ac_q,
-                                   kwargs=self.AC_sensor_config
+                                   kwargs=AC_sensor_config
                                    )
         self._services.append(self._ac_sensor)
 

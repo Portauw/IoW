@@ -13,11 +13,12 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
-        self._config = kwargs.copy()
-        # self.info("{}".format(self._config))
-        # for key, val in kwargs.items():
-        #     self.info("key: {} - value: {}".format(key,val))
-        #     setattr(self, key, val)
+       # self._config = list(kwargs.values())[0]
+
+        self.info("{}".format(self._config))
+        for key, val in kwargs.items():
+            self.info("key: {} - value: {}".format(key,val))
+            setattr(self, key, val)
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name="Electricity sensor", logging_q=logging_q)
