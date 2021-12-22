@@ -13,6 +13,8 @@ class EnvironmentSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self._output_q: Queue = output_q
         for key, val in kwargs.items():
+            self.info("key: {} - value: {}".format(key,val))
+
             setattr(self, key, val)
 
         Process.__init__(self)

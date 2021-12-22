@@ -14,6 +14,7 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
         for key, val in kwargs.items():
+            self.info("key: {} - value: {}".format(key,val))
             setattr(self, key, val)
 
         Process.__init__(self)

@@ -11,6 +11,7 @@ class VibrationSensor(Process, EdgiseBase):
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
         for key, val in kwargs.items():
+            self.info("key: {} - value: {}".format(key,val))
             setattr(self, key, val)
 
         Process.__init__(self)
