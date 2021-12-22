@@ -95,7 +95,7 @@ class Handler(EdgiseBase):
                                                      logging_q=self._logging_q,
                                                      input_q=self._input_env_q,
                                                      output_q=self._output_env_q,
-                                                     kwargs=self.env_sensor_config
+                                                     config_dict=self.env_sensor_config
                                                      )
         self._services.append(self._environment_sensor)
 
@@ -104,7 +104,7 @@ class Handler(EdgiseBase):
         self._output_vibration_q = Queue()
 
         # connect vibration sensor to analog port A2
-        self._vibration_sensor_config = {
+        vibration_sensor_config = {
             'name': 'Vibration sensor',
             'Pin': 2,
             'Type': 'INPUT',
@@ -115,7 +115,7 @@ class Handler(EdgiseBase):
                                                  logging_q=self._logging_q,
                                                  input_q=self._input_vibration_q,
                                                  output_q=self._output_vibration_q,
-                                                 kwargs=self._vibration_sensor_config
+                                                 config_dict=vibration_sensor_config
                                                  )
         self._services.append(self._vibration_sensor)
 
