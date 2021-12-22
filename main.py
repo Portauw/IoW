@@ -60,9 +60,9 @@ class Handler(EdgiseBase):
         # connect AC sensor to analog port A0
         self.AC_sensor_config = {
             'name': "Electricity sensor",
-            'Pin': 0,
-            'Type': "INPUT",
-            'Unit': "mA",
+            'pin': 0,
+            'type': "INPUT",
+            'unit': "mA",
         }
 
         self._ac_sensor = ACSensor(stop_event=self._stop_event,

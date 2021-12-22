@@ -14,6 +14,7 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
         self._config = list(kwargs.values())[0]
+
         # self.info("{}".format(self._config))
         # for key, val in kwargs.items():
         #     self.info("key: {} - value: {}".format(key,val))
@@ -32,7 +33,7 @@ class ACSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = grovepi.analogRead(self._config['Pin'])
+        sensor_value = grovepi.analogRead(self._config['pin'])
         return sensor_value
 
     def amplitude_current(self, sensor_value):
@@ -46,7 +47,7 @@ class ACSensor(Process, EdgiseBase):
 
     def run(self) -> None:
         self.info("Starting AC sensor")
-        grovepi.pinMode(self.Pin, self.Type)
+        grovepi.pinMode(self._config['pin'], self._config['type'])
 
         while not self._stop_event.is_set():
             if not self._input_q.empty():
@@ -62,5 +63,5 @@ class ACSensor(Process, EdgiseBase):
                     'RMSCurrent': rms_current,
                     'AVGPower': avg_power
                 }
-                measurement_dict[self.name] = measurement
+                measurement_dict[self._config['name']] = measurement
                 self._output_q.put_nowait(measurement_dict)
