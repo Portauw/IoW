@@ -16,7 +16,9 @@ class ACSensor(Process, EdgiseBase):
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
         self._config_json: str = config_json
+        self._test_dict = json.loads(config_json)
         self.info("{} -  type {}".format(self._config_json, type(self._config_json)))
+        self.info("{} -  type {}".format(self._test_dict, type(self._test_dict)))
         # for key, val in kwargs.items():
         #     self.info("key: {} - value: {}".format(key,val))
         #     setattr(self, key, val)
@@ -48,6 +50,7 @@ class ACSensor(Process, EdgiseBase):
     def run(self) -> None:
         self.info("Starting AC sensor")
         print(type(self._config_json))
+        print(type(self._test_dict))
         config = json.loads(self._config_json)
         print(type(config))
         for k,v in config.items():
