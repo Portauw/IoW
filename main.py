@@ -7,7 +7,7 @@ from src.uploader import UploaderProcess
 from src.edgise_mqtt import EdgiseMQTT
 from src.device_state import DeviceState
 from src.edgise_logger import EdgiseLogger
-from src.sensor.electricty import ACSensor
+from src.sensor.electricity import ACSensor
 from src.sensor.environment import EnvironmentSensor
 from src.sensor.vibration import VibrationSensor
 from src.sensor.waterflow import WaterflowSensor
