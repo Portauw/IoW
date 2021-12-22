@@ -59,10 +59,10 @@ class Handler(EdgiseBase):
 
         # connect AC sensor to analog port A0
         self.AC_sensor_config = {
-            "name": "Electricity sensor",
-            "Pin": "0",
-            "Type": "INPUT",
-            "Unit": "mA",
+            'name': "Electricity sensor",
+            'Pin': 0,
+            'Type': "INPUT",
+            'Unit': "mA",
         }
 
         self._ac_sensor = ACSensor(stop_event=self._stop_event,
@@ -79,11 +79,11 @@ class Handler(EdgiseBase):
 
         # connect env sensor to I2c
         self.env_sensor_config = {
-            "name": "Environment Sensor",
-            "Port": "1",
-            "Address": 0x76,
-            "Type": "INPUT",
-            "Unit": ("°C", "hPa", " % rH"),
+            'name': "Environment Sensor",
+            'Port': 1,
+            'Address': 0x76,
+            'Type': "INPUT",
+            'Unit': ("°C", "hPa", " % rH"),
         }
 
         self._environment_sensor = EnvironmentSensor(stop_event=self._stop_event,
@@ -100,10 +100,10 @@ class Handler(EdgiseBase):
 
         # connect vibration sensor to analog port A2
         self._vibration_sensor_config = {
-            "name": "Vibration sensor",
-            "Pin": "2",
-            "Type": "INPUT",
-            "Unit": "MHz",
+            'name': 'Vibration sensor',
+            'Pin': 2,
+            'Type': 'INPUT',
+            'Unit': 'MHz',
         }
 
         self._vibration_sensor = VibrationSensor(stop_event=self._stop_event,

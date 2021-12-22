@@ -6,12 +6,12 @@ import grovepi
 
 
 class ACSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config: dict):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config: Dict):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
-        self._config: dict = config
+        self._config: Dict = config
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
 
@@ -27,7 +27,7 @@ class ACSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = grovepi.analogRead(self._config["Pin"])
+        sensor_value = grovepi.analogRead(self._config['Pin'])
         return sensor_value
 
     def amplitude_current(self, sensor_value):
@@ -52,10 +52,10 @@ class ACSensor(Process, EdgiseBase):
                 rms_current = self.RMS_current(amplitude_current)
                 avg_power = self.avg_power_consumption(rms_current)
                 measurement = {
-                    "RawVal": raw_val,
-                    "CurrentAmp": amplitude_current,
-                    "RMSCurrent": rms_current,
-                    "AVGPower": avg_power
+                    'RawVal': raw_val,
+                    'CurrentAmp': amplitude_current,
+                    'RMSCurrent': rms_current,
+                    'AVGPower': avg_power
                 }
-                measurement_dict[self._config["name"]] = measurement
+                measurement_dict[self._config['name']] = measurement
                 self._output_q.put_nowait(measurement_dict)
