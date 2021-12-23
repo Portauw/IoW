@@ -51,8 +51,6 @@ class Handler(EdgiseBase):
 
         self._services.append(self.update_watcher)
 
-        # Measurement dictionary
-        measurement_dict = {}
 
         # Queues for AC sensor
         self._input_ac_q = Queue()
@@ -189,6 +187,8 @@ class Handler(EdgiseBase):
         # restart command handler
         while True:
             cmd = ""
+            # put empty q on input for ac sensor
+            self._input_ac_q.put_nowait({})
             try:
                 cmd = self._cmd_q_main_process.get_nowait()
             except queue.Empty:
