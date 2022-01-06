@@ -1,4 +1,6 @@
 import time
+from math import sqrt
+
 from grove.adc import ADC
 
 # AC Sensor
