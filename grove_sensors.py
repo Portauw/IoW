@@ -18,7 +18,8 @@ def read_ac_sensor():
 
 
 def calc_amplitude_current(sensor_value):
-    return float(sensor_value / 1024 * self.VCC / 800 * 2000000)
+    VCC = 5
+    return float(sensor_value / 1024 * VCC / 800 * 2000000)
 
 
 def calc_RMS_current(amplitude_current):
@@ -61,15 +62,13 @@ vibration_sensor_config = {
 vibr_adc = ADC()
 
 
-def read_sensor():
+def read_vbr_sensor():
     sensor_value = vibr_adc.read(vibration_sensor_config['pin'])
     return sensor_value
 
 
 def measure_vibration():
-    self.info("Starting vibration sensor")
-
-    raw_val = self.read_sensor()
+    raw_val = read_vbr_sensor()
     print("Raw Value Vibration: {}".format(raw_val))
 
     measurement = {
