@@ -57,8 +57,9 @@ vibration_sensor_config = {
     'type': 'INPUT',
     'unit': 'MHz',
 }
-#grovepi.pinMode(vibration_sensor_config['pin'], vibration_sensor_config['type'])
+# grovepi.pinMode(vibration_sensor_config['pin'], vibration_sensor_config['type'])
 vibr_adc = ADC()
+
 
 def read_sensor():
     sensor_value = vibr_adc.read(vibration_sensor_config['pin'])
@@ -75,3 +76,16 @@ def measure_vibration():
         'RawVal': raw_val,
     }
     return measurement
+
+
+if __name__ == '__main__':
+
+    while True:
+        measurement_ac = measure_AC()
+        for item in measurement_ac:
+            print(item)
+        time.sleep(1)
+        measurement_vibr = measure_vibration()
+        for item in measurement_vibr:
+            print(item)
+        time.sleep(1)
