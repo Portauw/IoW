@@ -1,4 +1,5 @@
-import grovepi
+import time
+from grove.adc import ADC
 
 # AC Sensor
 AC_sensor_config = {
@@ -7,11 +8,12 @@ AC_sensor_config = {
     'type': "INPUT",
     'unit': "mA",
 }
-grovepi.pinMode(AC_sensor_config['pin'], AC_sensor_config['type'])
+# grovepi.pinMode(AC_sensor_config['pin'], AC_sensor_config['type'])
+ac_adc = ADC()
 
 
 def read_ac_sensor():
-    sensor_value = grovepi.analogRead(AC_sensor_config['pin'])
+    sensor_value = ac_adc.read(AC_sensor_config['pin'])
     return sensor_value
 
 
@@ -55,11 +57,11 @@ vibration_sensor_config = {
     'type': 'INPUT',
     'unit': 'MHz',
 }
-grovepi.pinMode(vibration_sensor_config['pin'], vibration_sensor_config['type'])
-
+#grovepi.pinMode(vibration_sensor_config['pin'], vibration_sensor_config['type'])
+vibr_adc = ADC()
 
 def read_sensor():
-    sensor_value = grovepi.analogRead(vibration_sensor_config['pin'])
+    sensor_value = vibr_adc.read(vibration_sensor_config['pin'])
     return sensor_value
 
 
