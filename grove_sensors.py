@@ -29,7 +29,7 @@ def calc_RMS_current(amplitude_current):
 
 
 def calc_avg_power_consumption(RMS_current):
-    return RMS_voltage * RMS_current
+    return 230 * RMS_current
 
 
 def measure_AC():
