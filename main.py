@@ -112,7 +112,7 @@ class Handler(EdgiseBase):
         self._vibration_sensor = VibrationSensor(stop_event=self._stop_event,
                                                  logging_q=self._logging_q,
                                                  input_q=self._input_vibration_q,
-                                                 output_q=self._output_vibration_q,
+                                                 output_q=self._mqtt_send_q,
                                                  config_dict=vibration_sensor_config
                                                  )
         self._services.append(self._vibration_sensor)
@@ -172,14 +172,6 @@ class Handler(EdgiseBase):
         self.info("Quitting.")
 
     def main(self):
-
-        # platform = os.uname()
-        # try:
-        #     assert platform[1] == "raspberrypi"
-        #     assert platform[4].startswith("arm")
-        # except AssertionError:
-        #     self.error("Not running on a Raspberry Pi. Quitting")
-        #     exit()
 
         for service in self._services:
             service.start()
