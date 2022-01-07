@@ -1,28 +1,27 @@
+import time
+import json
+
 from math import sqrt
 from typing import List
 from multiprocessing import Process, Event, Queue
 from src.base import EdgiseBase
-import time
-import json
-import grovepi
+from grove.adc import ADC
 
 
 class ACSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_json:str, config_dict, **kwargs):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_json: str,
+                 config_dict, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
+        self.VCC = 5
         self._config_json: str = config_json
         self._config_dict = config_dict
         self.info("{} -  type {}".format(self._config_json, type(self._config_json)))
-        #self.info("{} -  type {}".format(self._test_dict, type(self._test_dict)))
-        # for key, val in kwargs.items():
-        #     self.info("key: {} - value: {}".format(key,val))
-        #     setattr(self, key, val)
-        grovepi.pinMode(self._config_dict['pin'], self._config_dict['type'])
+        self.adc = ADC()
         Process.__init__(self, name="Ac")
         EdgiseBase.__init__(self, name=self._config_dict['name'], logging_q=logging_q)
 
@@ -35,7 +34,7 @@ class ACSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = grovepi.analogRead(self._config_dict['pin'])
+        sensor_value = adc.read(self._config_dict['pin'])
         return sensor_value
 
     def amplitude_current(self, sensor_value):
@@ -54,7 +53,7 @@ class ACSensor(Process, EdgiseBase):
         print(self._config_dict['name'])
         config = json.loads(self._config_json)
         print(type(config))
-        for k,v in config.items():
+        for k, v in config.items():
             print(v)
 
         while not self._stop_event.is_set():

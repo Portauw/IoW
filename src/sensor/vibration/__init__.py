@@ -1,16 +1,17 @@
 from multiprocessing import Process, Event, Queue
 
 from src.base import EdgiseBase
-import grovepi
+from grove.adc import ADC
 
 
 class VibrationSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue,config_dict, **kwargs):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
         self._config_dict = config_dict
+        self.adc = ADC()
         Process.__init__(self)
         EdgiseBase.__init__(self, name=self._config_dict['name'], logging_q=logging_q)
         # config = {
@@ -21,7 +22,7 @@ class VibrationSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = grovepi.analogRead(self._config_dict['pin'])
+        sensor_value = vibr_adc.read(self._config_dict['pin'])
         return sensor_value
 
     def run(self) -> None:
