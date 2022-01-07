@@ -20,10 +20,11 @@ class ACSensor(Process, EdgiseBase):
         self.VCC = 5
         self._config_json: str = config_json
         self._config_dict = config_dict
+        self._name = self._config_dict['name']
         self.info("{} -  type {}".format(self._config_json, type(self._config_json)))
         self.adc = ADC()
-        Process.__init__(self, name="Ac")
-        EdgiseBase.__init__(self, name=self._config_dict['name'], logging_q=logging_q)
+        Process.__init__(self)
+        EdgiseBase.__init__(self, name=self._name, logging_q=logging_q)
 
         # config = {
         #           "name":str

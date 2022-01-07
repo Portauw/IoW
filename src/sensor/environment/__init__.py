@@ -12,7 +12,7 @@ class EnvironmentSensor(Process, EdgiseBase):
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
         self._config_dict = config_dict
-        self.bme_sensor = bme280
+        self.bme_sensor = bme280()
 
         # Set oversampling
         # bme280 class defines OVRS_x0, .._x1, .._x2, .._x4, .._x8, .._x16
