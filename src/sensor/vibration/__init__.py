@@ -1,5 +1,5 @@
 from multiprocessing import Process, Event, Queue
-
+import time
 from src.base import EdgiseBase
 from grove.adc import ADC
 
@@ -39,3 +39,4 @@ class VibrationSensor(Process, EdgiseBase):
                 }
                 measurement_dict[self._config_dict['name']] = measurement
                 self._output_q.put_nowait(measurement_dict)
+                time.sleep(2)
