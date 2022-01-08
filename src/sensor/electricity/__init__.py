@@ -35,7 +35,7 @@ class ACSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = adc.read(self._config_dict['pin'])
+        sensor_value = self.adc.read(self._config_dict['pin'])
         return sensor_value
 
     def amplitude_current(self, sensor_value):
