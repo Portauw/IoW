@@ -71,7 +71,7 @@ class EnvironmentSensor(Process, EdgiseBase):
     def run(self) -> None:
         self.info("Starting vibration sensor")
 
-        self.calibration_sequence()
+
         while not self._stop_event.is_set():
             if not self._input_q.empty() and self.calibration_set:
                 measurement_dict = self._input_q.get_nowait()
