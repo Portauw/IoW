@@ -1,8 +1,8 @@
 from multiprocessing import Process, Event, Queue
 
 from src.base import EdgiseBase
-from time import sleep
 from grove.modules.bme280 import bme280
+import time
 
 
 class EnvironmentSensor(Process, EdgiseBase):
@@ -71,7 +71,6 @@ class EnvironmentSensor(Process, EdgiseBase):
     def run(self) -> None:
         print("Starting vibration sensor")
 
-
         while not self._stop_event.is_set():
             if not self._input_q.empty() and self.calibration_set:
                 measurement_dict = self._input_q.get_nowait()
@@ -84,10 +83,12 @@ class EnvironmentSensor(Process, EdgiseBase):
                 # print out the data
                 print("Temperature: %.2f" % self.bme_sensor.temperature, chr(176) + "C")
                 print("Pressure: %.2fhPa, where correction is %.2fhPa, sensor reading is %.2fhPa"
-                      % (self.bme_sensor.calibrated_pressure, self.bme_sensor.calibration_pressure, self.bme_sensor.pressure))
+                      % (self.bme_sensor.calibrated_pressure, self.bme_sensor.calibration_pressure,
+                         self.bme_sensor.pressure))
                 print("Humidity: %.2f" % self.bme_sensor.humidity, "%RH")
                 print(
-                    "altitude from sea level: %.3fm, %.3f" % (altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
+                    "altitude from sea level: %.3fm, %.3f" % (
+                    altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
                 print("\n")
 
                 measurement = {

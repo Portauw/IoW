@@ -78,4 +78,4 @@ class ACSensor(Process, EdgiseBase):
                 }
                 measurement_dict[self._config_dict['name']] = measurement
                 self._output_q.put_nowait(measurement_dict)
-                time.sleep(2)
+                time.sleep(1)
