@@ -76,18 +76,18 @@ class EnvironmentSensor(Process, EdgiseBase):
             if not self._input_q.empty() and self.calibration_set:
                 measurement_dict = self._input_q.get_nowait()
 
-                raw_val = self.bme_sensor.read_raw_signals()
-                comp_val = self.bme_sensor.read_compensated_signals()
+                self.bme_sensor.read_raw_signals()
+                self.bme_sensor.read_compensated_signals()
                 # Only works if pressure calibration is done with set_pressure_calibration()
                 altitude = self.bme_sensor.get_altitude(self.current_sea_level_pressure)
 
                 # self.info out the data
-                self.info("Temperature: %.2f" % bme_sensor.temperature, chr(176) + "C")
+                self.info("Temperature: %.2f" % self.bme_sensor.temperature, chr(176) + "C")
                 self.info("Pressure: %.2fhPa, where correction is %.2fhPa, sensor reading is %.2fhPa"
-                      % (bme_sensor.calibrated_pressure, bme_sensor.calibration_pressure, bme_sensor.pressure))
-                self.info("Humidity: %.2f" % bme_sensor.humidity, "%RH")
+                      % (self.bme_sensor.calibrated_pressure, self.bme_sensor.calibration_pressure, self.bme_sensor.pressure))
+                self.info("Humidity: %.2f" % self.bme_sensor.humidity, "%RH")
                 self.info(
-                    "altitude from sea level: %.3fm, %.3f" % (altitude, bme_sensor.calibrated_pressure + altitude / 8))
+                    "altitude from sea level: %.3fm, %.3f" % (altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
                 self.info("\n")
 
                 measurement = {
