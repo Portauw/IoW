@@ -55,7 +55,7 @@ class EnvironmentSensor(Process, EdgiseBase):
             if not self.bme_sensor.read_compensated_signals():
                 print("\nError compensating values")
 
-            sleep(1)
+            time.sleep(1)
 
         # count == response time
         self.bme_sensor.set_pressure_calibration(level=self.current_level_from_sea,
