@@ -22,7 +22,7 @@ class EnvironmentSensor(Process, EdgiseBase):
 
         # Set internal IIR filter coefficient. 0 = no filter
         self.iir_filter = bme280.filter_16
-        self.bme_sensor.set_filter(iir_filter)
+        self.bme_sensor.set_filter(self.iir_filter)
 
         # Know values for pressure correction
         self.current_level_from_sea = 103  # Know height from sealevel m
