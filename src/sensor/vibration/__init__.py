@@ -11,7 +11,7 @@ class VibrationSensor(Process, EdgiseBase):
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
         self._config_dict = config_dict
-        self.adc = ADC()
+        self.adc = ADC(address=0x08)
         Process.__init__(self)
         EdgiseBase.__init__(self, name=self._config_dict['name'], logging_q=logging_q)
         # config = {
