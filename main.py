@@ -120,7 +120,7 @@ class Handler(EdgiseBase):
                                                  config_dict=vibration_sensor_config,
                                                  resource_lock=self._i2c_lock
                                                  )
-        #self._services.append(self._vibration_sensor)
+        self._services.append(self._vibration_sensor)
 
         # # Queues for  sensor
         # self._input_wf_q = Queue()
