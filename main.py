@@ -16,7 +16,7 @@ from config import cfg
 import queue
 import time
 import sys
-from multiprocessing import Queue, Process
+from multiprocessing import Queue, Process, Lock
 from multiprocessing import Event as mpEvent
 from src.base import EdgiseBase
 from typing import List
@@ -24,9 +24,10 @@ import json
 
 
 class Handler(EdgiseBase):
-    def __init__(self, stop_event: mpEvent, logging_q: Queue, mqtt_send_q):
+    def __init__(self, stop_event: mpEvent, logging_q: Queue, mqtt_send_q, resource_lock: Lock):
         self._logging_q = logging_q
         self._stop_event = stop_event
+        self._i2c_lock = resource_lock
         EdgiseBase.__init__(self, name="MAIN", logging_q=logging_q)
         self.info('Initializing IoW application')
 
@@ -72,7 +73,8 @@ class Handler(EdgiseBase):
                                    input_q=self._input_ac_q,
                                    output_q=self._output_ac_q,
                                    config_json=config_json,
-                                   config_dict=AC_sensor_config
+                                   config_dict=AC_sensor_config,
+                                   resource_lock=self._i2c_lock
                                    )
         self._services.append(self._ac_sensor)
 
@@ -93,7 +95,8 @@ class Handler(EdgiseBase):
                                                      logging_q=self._logging_q,
                                                      input_q=self._output_ac_q,
                                                      output_q=self._output_env_q,
-                                                     config_dict=self.env_sensor_config
+                                                     config_dict=self.env_sensor_config,
+                                                     resource_lock=self._i2c_lock
                                                      )
         self._services.append(self._environment_sensor)
         self._environment_sensor.calibration_sequence()
@@ -114,7 +117,8 @@ class Handler(EdgiseBase):
                                                  logging_q=self._logging_q,
                                                  input_q=self._output_env_q,
                                                  output_q=self._mqtt_send_q,
-                                                 config_dict=vibration_sensor_config
+                                                 config_dict=vibration_sensor_config,
+                                                 resource_lock=self._i2c_lock
                                                  )
         self._services.append(self._vibration_sensor)
 
@@ -209,6 +213,8 @@ if __name__ == '__main__':
     mqtt_send_q = Queue()
     fake_stop = mpEvent()
 
+    i2c_lock = Lock()
+
     # Initialize a logging process that takes an incoming queue
     logging_process = EdgiseLogger(stop_event=fake_stop,  # Just for now
                                    incoming_q=logging_q,
@@ -219,7 +225,8 @@ if __name__ == '__main__':
 
     handler = Handler(stop_event=stop_event,
                       logging_q=logging_q,
-                      mqtt_send_q=mqtt_send_q)
+                      mqtt_send_q=mqtt_send_q,
+                      resource_lock=i2c_lock)
 
     handler.main()
 

@@ -83,10 +83,8 @@ if __name__ == '__main__':
 
     while True:
         measurement_ac = measure_AC()
-        for item in measurement_ac:
-            print(item)
+
         time.sleep(1)
         measurement_vibr = measure_vibration()
-        for item in measurement_vibr:
-            print(item)
+
         time.sleep(1)

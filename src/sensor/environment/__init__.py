@@ -6,13 +6,15 @@ import time
 
 
 class EnvironmentSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict, **kwargs):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict,
+                 resource_lock: Lock, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
         self._config_dict = config_dict
         self.bme_sensor = bme280()
+        self.i2c_lock = resource_lock
 
         # Set oversampling
         # bme280 class defines OVRS_x0, .._x1, .._x2, .._x4, .._x8, .._x16
@@ -74,11 +76,11 @@ class EnvironmentSensor(Process, EdgiseBase):
         while not self._stop_event.is_set():
             if not self._input_q.empty() and self.calibration_set:
                 measurement_dict = self._input_q.get_nowait()
-
-                self.bme_sensor.read_raw_signals()
-                self.bme_sensor.read_compensated_signals()
-                # Only works if pressure calibration is done with set_pressure_calibration()
-                altitude = self.bme_sensor.get_altitude(self.current_sea_level_pressure)
+                with self.i2c_lock:
+                    self.bme_sensor.read_raw_signals()
+                    self.bme_sensor.read_compensated_signals()
+                    #   Only works if pressure calibration is done with set_pressure_calibration()
+                    altitude = self.bme_sensor.get_altitude(self.current_sea_level_pressure)
 
                 # print out the data
                 print("Temperature: %.2f" % self.bme_sensor.temperature, chr(176) + "C")
@@ -88,7 +90,7 @@ class EnvironmentSensor(Process, EdgiseBase):
                 print("Humidity: %.2f" % self.bme_sensor.humidity, "%RH")
                 print(
                     "altitude from sea level: %.3fm, %.3f" % (
-                    altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
+                        altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
                 print("\n")
 
                 measurement = {
