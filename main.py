@@ -71,7 +71,7 @@ class Handler(EdgiseBase):
         self._ac_sensor = ACSensor(stop_event=self._stop_event,
                                    logging_q=self._logging_q,
                                    input_q=self._input_ac_q,
-                                   output_q=self._output_ac_q,
+                                   output_q=self._mqtt_send_q,
                                    config_json=config_json,
                                    config_dict=AC_sensor_config,
                                    resource_lock=self._i2c_lock
@@ -98,8 +98,8 @@ class Handler(EdgiseBase):
                                                      config_dict=self.env_sensor_config,
                                                      resource_lock=self._i2c_lock
                                                      )
-        self._services.append(self._environment_sensor)
-        self._environment_sensor.calibration_sequence()
+        #self._services.append(self._environment_sensor)
+        #self._environment_sensor.calibration_sequence()
 
         # Queues for vibration sensor
         self._input_vibration_q = Queue()
