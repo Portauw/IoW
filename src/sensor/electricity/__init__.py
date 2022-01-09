@@ -15,7 +15,6 @@ class ACSensor(Process, EdgiseBase):
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
         self._output_q: Queue = output_q
-        self._output_q: Queue = output_q
         self.RMS_voltage = 230
         self.VCC = 5
         self._config_dict = config_dict

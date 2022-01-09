@@ -193,13 +193,13 @@ class Handler(EdgiseBase):
                 try:
                     self._logging_q.put_nowait(self.error(f"Unknown exception : {e}"))
                 except Exception as e:
-                    print(f"SHITTY ERROR! {e}")
+                    self.info(f"SHITTY ERROR! {e}")
 
             if cmd == "RESTART":
                 self.stop()
                 break
 
-            time.sleep(0.1)
+            time.sleep(1)
 
 
 if __name__ == '__main__':

@@ -91,7 +91,6 @@ class EnvironmentSensor(Process, EdgiseBase):
                 self.info(
                     "altitude from sea level: {}m, {}".format(
                         altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
-                self.info("\n")
 
                 measurement = {
                     "Temperature": self.bme_sensor.temperature,
