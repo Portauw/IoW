@@ -38,7 +38,7 @@ class EnvironmentSensor(Process, EdgiseBase):
     def calibration_sequence(self):
         response_time = (2 ** self.iir_filter) * 2
         while self.count < response_time:
-            print("Wait for sensor to settle before setting compensation!", response_time - self.count, "s")
+            self.info("Wait for sensor to settle before setting compensation! {} s".format(response_time - self.count))
             self.count += 1
             # set mode to FORCE that is one time measurement
             # bme280.MODE_SLEEP, ...FORCE, ...NORMAL
@@ -46,16 +46,16 @@ class EnvironmentSensor(Process, EdgiseBase):
             # if not specified is set to 1000ms bme280.t_sb_1000
             # Returns 1 on success 0 otherwise
             if not self.bme_sensor.set_mode(bme280.MODE_FORCE):
-                print("\nMode change failed!")
+                self.info("\nMode change failed!")
 
             # Measure raw signals measurements are put in bme280.raw_* variables
             # Returns 1 on success otherwise 0
             if not self.bme_sensor.read_raw_signals():
-                print("\nError in measurement!")
+                self.info("\nError in measurement!")
 
             # Compensate the raw signals
             if not self.bme_sensor.read_compensated_signals():
-                print("\nError compensating values")
+                self.info("\nError compensating values")
 
             time.sleep(1)
 
@@ -66,12 +66,12 @@ class EnvironmentSensor(Process, EdgiseBase):
         self.calibration_set = 1
         # Update the compensated values because new calibration value is given
         if not self.bme_sensor.read_compensated_signals():
-            print("\nError compensating values")
-        print("Sensor compensation is set")
-        print("response time reached, finished calibration sequence!")
+            self.info("\nError compensating values")
+        self.info("Sensor compensation is set")
+        self.info("response time reached, finished calibration sequence!")
 
     def run(self) -> None:
-        print("Starting vibration sensor")
+        self.info("Starting Environment sensor")
 
         while not self._stop_event.is_set():
             if not self._input_q.empty() and self.calibration_set:
@@ -82,16 +82,16 @@ class EnvironmentSensor(Process, EdgiseBase):
                     #   Only works if pressure calibration is done with set_pressure_calibration()
                     altitude = self.bme_sensor.get_altitude(self.current_sea_level_pressure)
 
-                # print out the data
-                print("Temperature: %.2f" % self.bme_sensor.temperature, chr(176) + "C")
-                print("Pressure: %.2fhPa, where correction is %.2fhPa, sensor reading is %.2fhPa"
-                      % (self.bme_sensor.calibrated_pressure, self.bme_sensor.calibration_pressure,
-                         self.bme_sensor.pressure))
-                print("Humidity: %.2f" % self.bme_sensor.humidity, "%RH")
-                print(
-                    "altitude from sea level: %.3fm, %.3f" % (
+                # self.info out the data
+                self.info("Temperature: {} deg".format(self.bme_sensor.temperature))
+                self.info("Pressure: {} hPa, where correction is {} hPa, sensor reading is {} hPa".format(
+                    self.bme_sensor.calibrated_pressure, self.bme_sensor.calibration_pressure,
+                    self.bme_sensor.pressure))
+                self.info("Humidity: {} %RH".format(self.bme_sensor.humidity))
+                self.info(
+                    "altitude from sea level: {}m, {}".format(
                         altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
-                print("\n")
+                self.info("\n")
 
                 measurement = {
                     "Temperature": self.bme_sensor.temperature,
