@@ -75,7 +75,7 @@ class Handler(EdgiseBase):
                                    config_dict=AC_sensor_config,
                                    resource_lock=self._i2c_lock
                                    )
-        #self._services.append(self._ac_sensor)
+        self._services.append(self._ac_sensor)
 
         # Queues for env sensor
         self._input_env_q = Queue()
@@ -92,7 +92,7 @@ class Handler(EdgiseBase):
 
         self._environment_sensor = EnvironmentSensor(stop_event=self._stop_event,
                                                      logging_q=self._logging_q,
-                                                     input_q=self._input_ac_q,
+                                                     input_q=self._output_ac_q,
                                                      output_q=self._mqtt_send_q,
                                                      config_dict=self.env_sensor_config,
                                                      resource_lock=self._i2c_lock
