@@ -69,6 +69,7 @@ class EnvironmentSensor(Process, EdgiseBase):
             self.info("\nError compensating values")
         self.info("Sensor compensation is set")
         self.info("response time reached, finished calibration sequence!")
+        self.bme_sensor.write_reset()
         return
 
     def run(self) -> None:
@@ -84,6 +85,7 @@ class EnvironmentSensor(Process, EdgiseBase):
                     self.bme_sensor.read_compensated_signals()
                     #   Only works if pressure calibration is done with set_pressure_calibration()
                     altitude = self.bme_sensor.get_altitude(self.current_sea_level_pressure)
+                    self.bme_sensor.write_reset()
 
                 # self.info out the data
                 self.info("Temperature: {} deg".format(self.bme_sensor.temperature))
