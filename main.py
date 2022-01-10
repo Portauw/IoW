@@ -93,12 +93,11 @@ class Handler(EdgiseBase):
         self._environment_sensor = EnvironmentSensor(stop_event=self._stop_event,
                                                      logging_q=self._logging_q,
                                                      input_q=self._output_ac_q,
-                                                     output_q=self._mqtt_send_q,
+                                                     output_q=self._output_env_q,
                                                      config_dict=self.env_sensor_config,
                                                      resource_lock=self._i2c_lock
                                                      )
         self._services.append(self._environment_sensor)
-        #self._environment_sensor.calibration_sequence()
 
         # Queues for vibration sensor
         self._input_vibration_q = Queue()
@@ -119,7 +118,7 @@ class Handler(EdgiseBase):
                                                  config_dict=vibration_sensor_config,
                                                  resource_lock=self._i2c_lock
                                                  )
-        #self._services.append(self._vibration_sensor)
+        self._services.append(self._vibration_sensor)
 
         # # Queues for  sensor
         # self._input_wf_q = Queue()
