@@ -77,7 +77,7 @@ class EnvironmentSensor(Process, EdgiseBase):
 
         self.calibration_sequence()
         while not self._stop_event.is_set():
-            if not self._input_q.empty():
+            if not self._input_q.empty() and self.calibration_set:
                 measurement_dict = self._input_q.get_nowait()
                 with self.i2c_lock:
                     self.bme_sensor.read_raw_signals()
