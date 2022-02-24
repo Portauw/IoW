@@ -53,10 +53,10 @@ class ACSensor(Process, EdgiseBase):
         print(self._config_dict['name'])
 
         while not self._stop_event.is_set():
-            measurement = {'deviceId': cfg.deviceId,
-                           'projectId': cfg.projectId,
-                           'timeStamp': time.time()
-                           }
+            # measurement = {'deviceId': cfg.deviceId,
+            #                'projectId': cfg.projectId,
+            #                'timeStamp': time.time()
+            #                }
 
             self.i2c_lock.acquire()
             try:
@@ -79,6 +79,6 @@ class ACSensor(Process, EdgiseBase):
                     'avgPower': avg_power
                 }
             }
-            measurement['payLoad'] = data
-            self._output_q.put_nowait({'event':json.dumps(measurement)})
+            measurement = {'data': data}
+            self._output_q.put_nowait({'event': json.dumps(measurement)})
             time.sleep(1)

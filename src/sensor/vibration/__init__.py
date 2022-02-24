@@ -34,10 +34,10 @@ class VibrationSensor(Process, EdgiseBase):
         self.info("Starting vibration sensor")
 
         while not self._stop_event.is_set():
-            measurement = {'deviceId': cfg.deviceId,
-                           'projectId': cfg.projectId,
-                           'timeStamp': time.time()
-                           }
+            # measurement = {'deviceId': cfg.deviceId,
+            #                'projectId': cfg.projectId,
+            #                'timeStamp': time.time()
+            #                }
 
             self.i2c_lock.acquire()
             try:
@@ -50,6 +50,6 @@ class VibrationSensor(Process, EdgiseBase):
                     'RawVal': raw_val
                 }
             }
-            measurement['payLoad'] = data
+            measurement = {'data': data}
             self._output_q.put_nowait({'event':json.dumps(measurement)})
             time.sleep(2)

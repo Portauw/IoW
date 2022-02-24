@@ -79,10 +79,10 @@ class EnvironmentSensor(Process, EdgiseBase):
         self.calibration_sequence()
         while not self._stop_event.is_set():
             if self.calibration_set:
-                measurement = {'deviceId': cfg.deviceId,
-                               'projectId': cfg.projectId,
-                               'timeStamp': time.time()
-                               }
+                # measurement = {'deviceId': cfg.deviceId,
+                #                'projectId': cfg.projectId,
+                #                'timeStamp': time.time()
+                #                }
 
                 with self.i2c_lock:
                     self.bme_sensor.read_raw_signals()
@@ -112,6 +112,6 @@ class EnvironmentSensor(Process, EdgiseBase):
                         "altitude": altitude
                     }
                 }
-                measurement['payLoad'] = data
+                measurement = {'data': data}
                 self._output_q.put_nowait({'event':json.dumps(measurement)})
                 time.sleep(1)
