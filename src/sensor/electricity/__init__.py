@@ -81,4 +81,4 @@ class ACSensor(Process, EdgiseBase):
             }
             measurement = {'data': data}
             self._output_q.put_nowait({'event': json.dumps(measurement)})
-            time.sleep(1)
+            time.sleep(10)

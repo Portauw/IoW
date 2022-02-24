@@ -78,6 +78,7 @@ class EnvironmentSensor(Process, EdgiseBase):
 
         self.calibration_sequence()
         while not self._stop_event.is_set():
+            self._stop_event.
             if self.calibration_set:
                 # measurement = {'deviceId': cfg.deviceId,
                 #                'projectId': cfg.projectId,
@@ -102,8 +103,7 @@ class EnvironmentSensor(Process, EdgiseBase):
                     "altitude from sea level: {}m, {}".format(
                         altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
 
-                data = {'payLoad':
-                    {
+                data = {
                         "temperature": self.bme_sensor.temperature,
                         "pressureSensorReading": self.bme_sensor.pressure,
                         "pressureCorrrection": self.bme_sensor.calibration_pressure,
@@ -111,7 +111,6 @@ class EnvironmentSensor(Process, EdgiseBase):
                         "humidity": self.bme_sensor.humidity,
                         "altitude": altitude
                     }
-                }
                 measurement = {'data': data}
                 self._output_q.put_nowait({'event':json.dumps(measurement)})
-                time.sleep(1)
+                time.sleep(10)
