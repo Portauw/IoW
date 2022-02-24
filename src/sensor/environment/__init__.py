@@ -78,7 +78,6 @@ class EnvironmentSensor(Process, EdgiseBase):
 
         self.calibration_sequence()
         while not self._stop_event.is_set():
-            self._stop_event.
             if self.calibration_set:
                 # measurement = {'deviceId': cfg.deviceId,
                 #                'projectId': cfg.projectId,
