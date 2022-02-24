@@ -3,7 +3,7 @@ from multiprocessing import Process, Event, Queue, Lock
 from src.base import EdgiseBase
 from grove.modules.bme280 import bme280
 import time
-
+from config import cfg
 
 class EnvironmentSensor(Process, EdgiseBase):
     def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict,

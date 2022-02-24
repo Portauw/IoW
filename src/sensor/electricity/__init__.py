@@ -6,6 +6,7 @@ from typing import List
 from multiprocessing import Process, Event, Queue, Lock
 from src.base import EdgiseBase
 from grove.adc import ADC
+from config import cfg
 
 
 class ACSensor(Process, EdgiseBase):

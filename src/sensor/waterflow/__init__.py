@@ -4,6 +4,7 @@ from src.base import EdgiseBase
 
 import RPi.GPIO as GPIO
 import time
+from config import cfg
 import sys
 
 

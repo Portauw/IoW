@@ -2,6 +2,7 @@ from multiprocessing import Process, Event, Queue, Lock
 import time
 from src.base import EdgiseBase
 from grove.adc import ADC
+from config import cfg
 
 
 class VibrationSensor(Process, EdgiseBase):
