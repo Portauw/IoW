@@ -6,6 +6,7 @@ import time
 from config import cfg
 import json
 
+
 class EnvironmentSensor(Process, EdgiseBase):
     def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict,
                  resource_lock: Lock, **kwargs):
@@ -102,14 +103,15 @@ class EnvironmentSensor(Process, EdgiseBase):
                     "altitude from sea level: {}m, {}".format(
                         altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
 
-                data = {
-                        "temperature": self.bme_sensor.temperature,
-                        "pressureSensorReading": self.bme_sensor.pressure,
-                        "pressureCorrrection": self.bme_sensor.calibration_pressure,
-                        "pressure": self.bme_sensor.calibrated_pressure,
-                        "humidity": self.bme_sensor.humidity,
-                        "altitude": altitude
+                data = {"environmentSensorData": {
+                    "temperature": self.bme_sensor.temperature,
+                    "pressureSensorReading": self.bme_sensor.pressure,
+                    "pressureCorrrection": self.bme_sensor.calibration_pressure,
+                    "pressure": self.bme_sensor.calibrated_pressure,
+                    "humidity": self.bme_sensor.humidity,
+                    "altitude": altitude
                     }
+                }
                 measurement = {'data': data}
-                self._output_q.put_nowait({'event':json.dumps(measurement)})
+                self._output_q.put_nowait({'event': json.dumps(measurement)})
                 time.sleep(10)
