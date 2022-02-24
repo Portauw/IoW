@@ -3,6 +3,7 @@ import time
 from src.base import EdgiseBase
 from grove.adc import ADC
 from config import cfg
+import json
 
 
 class VibrationSensor(Process, EdgiseBase):
@@ -50,5 +51,5 @@ class VibrationSensor(Process, EdgiseBase):
                 }
             }
             measurement['payLoad'] = data
-            self._output_q.put_nowait(measurement)
+            self._output_q.put_nowait(json.dumps(measurement))
             time.sleep(2)

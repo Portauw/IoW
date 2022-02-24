@@ -4,6 +4,7 @@ from src.base import EdgiseBase
 from grove.modules.bme280 import bme280
 import time
 from config import cfg
+import json
 
 class EnvironmentSensor(Process, EdgiseBase):
     def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict,
@@ -112,5 +113,5 @@ class EnvironmentSensor(Process, EdgiseBase):
                     }
                 }
                 measurement['payLoad'] = data
-                self._output_q.put_nowait(measurement)
+                self._output_q.put_nowait(json.dump(measurement))
                 time.sleep(1)

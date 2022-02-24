@@ -7,6 +7,7 @@ from multiprocessing import Process, Event, Queue, Lock
 from src.base import EdgiseBase
 from grove.adc import ADC
 from config import cfg
+import json
 
 
 class ACSensor(Process, EdgiseBase):
@@ -79,5 +80,5 @@ class ACSensor(Process, EdgiseBase):
                 }
             }
             measurement['payLoad'] = data
-            self._output_q.put_nowait(measurement)
+            self._output_q.put_nowait(json.dump(measurement))
             time.sleep(1)
