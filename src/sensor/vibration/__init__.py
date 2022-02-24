@@ -5,7 +5,8 @@ from grove.adc import ADC
 
 
 class VibrationSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict, resource_lock: Lock, **kwargs):
+    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict,
+                 resource_lock: Lock, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
         self._input_q: Queue = input_q
@@ -31,17 +32,22 @@ class VibrationSensor(Process, EdgiseBase):
         self.info("Starting vibration sensor")
 
         while not self._stop_event.is_set():
-            if not self._input_q.empty():
-                measurement_dict = self._input_q.get_nowait()
-                self.i2c_lock.acquire()
-                try:
-                    raw_val = self.read_sensor()
-                finally:
-                    self.i2c_lock.release()
-                self.info("Raw Value Vibration: {}".format(raw_val))
-                measurement = {
-                    'RawVal': raw_val,
+            measurement = {'deviceId': cfg.deviceId,
+                           'projectId': cfg.projectId,
+                           'timeStamp': time.time()
+                           }
+
+            self.i2c_lock.acquire()
+            try:
+                raw_val = self.read_sensor()
+            finally:
+                self.i2c_lock.release()
+            self.info("Raw Value Vibration: {}".format(raw_val))
+            data = {'vibrationSensorData':
+                {
+                    'RawVal': raw_val
                 }
-                measurement_dict[self._config_dict['name']] = measurement
-                self._output_q.put_nowait(measurement_dict)
-                time.sleep(2)
+            }
+            measurement['payLoad'] = data
+            self._output_q.put_nowait(measurement)
+            time.sleep(2)

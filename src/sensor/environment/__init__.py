@@ -69,7 +69,7 @@ class EnvironmentSensor(Process, EdgiseBase):
             self.info("\nError compensating values")
         self.info("Sensor compensation is set")
         self.info("response time reached, finished calibration sequence!")
-        #self.bme_sensor.write_reset()
+        # self.bme_sensor.write_reset()
         return
 
     def run(self) -> None:
@@ -77,15 +77,19 @@ class EnvironmentSensor(Process, EdgiseBase):
 
         self.calibration_sequence()
         while not self._stop_event.is_set():
-            if not self._input_q.empty() and self.calibration_set:
-                measurement_dict = self._input_q.get_nowait()
+            if self.calibration_set:
+                measurement = {'deviceId': cfg.deviceId,
+                               'projectId': cfg.projectId,
+                               'timeStamp': time.time()
+                               }
+
                 with self.i2c_lock:
                     self.bme_sensor.read_raw_signals()
-                    #time.sleep(1)
+                    # time.sleep(1)
                     self.bme_sensor.read_compensated_signals()
                     #   Only works if pressure calibration is done with set_pressure_calibration()
                     altitude = self.bme_sensor.get_altitude(self.current_sea_level_pressure)
-                    #self.bme_sensor.write_reset()
+                    # self.bme_sensor.write_reset()
 
                 # self.info out the data
                 self.info("Temperature: {} deg".format(self.bme_sensor.temperature))
@@ -97,14 +101,16 @@ class EnvironmentSensor(Process, EdgiseBase):
                     "altitude from sea level: {}m, {}".format(
                         altitude, self.bme_sensor.calibrated_pressure + altitude / 8))
 
-                measurement = {
-                    "Temperature": self.bme_sensor.temperature,
-                    "Pressure Sensor Reading": self.bme_sensor.pressure,
-                    "Pressure Corrrection": self.bme_sensor.calibration_pressure,
-                    "Pressure": self.bme_sensor.calibrated_pressure,
-                    "Humidity": self.bme_sensor.humidity,
-                    "Altitude": altitude
+                data = {'payLoad':
+                    {
+                        "temperature": self.bme_sensor.temperature,
+                        "pressureSensorReading": self.bme_sensor.pressure,
+                        "pressureCorrrection": self.bme_sensor.calibration_pressure,
+                        "pressure": self.bme_sensor.calibrated_pressure,
+                        "humidity": self.bme_sensor.humidity,
+                        "altitude": altitude
+                    }
                 }
-                measurement_dict[self._config_dict['name']] = measurement
-                self._output_q.put_nowait(measurement_dict)
+                measurement['payLoad'] = data
+                self._output_q.put_nowait(measurement)
                 time.sleep(1)

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+	<link rel="stylesheet"  href="captiveportal-style.css" />
+</head>
+<body>
+
+<form method="post" action="/">
+  <h1>Telly - WiFi selector</h1>
+    <div class="dropdown dropdown-dark" align="center">
+        <p align="center">
+            <select id="ssid" name="ssid" class="dropdown-select">
+                {% for item in data %}
+                    <option value="{{ item }}">{{ item }}</option>
+                {% endfor %}
+            </select>
+        </p>
+    </div>
+
+
+    <div class="dropdown dropdown-dark" align="center">
+
+    <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        </div>
+    </div>
+
+
+    <div class="inset">
+        <p>
+            <label for="other">SSID</label>
+            <input type="text" name="other_ssid" id="other_ssid">
+        </p>
+    </div>
+    <div class="inset">
+        <p>
+            <label for="password">PASSWORD</label>
+            <input type="password" name="password" id="auth_pass">
+        </p>
+    </div>
+
+  <p class="p-container">
+    <input type="submit" name="btn_value" id="accept" value="Send">
+  </p>
+  <p class="p-copyright">© 2020 Edgise.</p>
+
+<div class="month">
+  <ul>
+    <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li>
+    <li>August<br><span style="font-size:18px">2021</span></li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+<ul class="days">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li><span class="active">10</span></li>
+  <li>11</li>
+  ...etc
+</ul>
+
+</form>
+
+
+
+</body>
+</html>
