@@ -113,5 +113,5 @@ class EnvironmentSensor(Process, EdgiseBase):
                     }
                 }
                 measurement['payLoad'] = data
-                self._output_q.put_nowait(json.dump(measurement))
+                self._output_q.put_nowait({'event':json.dumps(measurement)})
                 time.sleep(1)

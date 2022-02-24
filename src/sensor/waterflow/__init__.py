@@ -61,5 +61,5 @@ class WaterflowSensor(Process, EdgiseBase):
                     'flowHour': flow_h
                 }
                 measurement_dict[self._config_dict['name']] = measurement
-                self._output_q.put_nowait(measurement_dict)
+                self._output_q.put_nowait({'event':json.dumps(measurement)})
                 time.sleep(1)
