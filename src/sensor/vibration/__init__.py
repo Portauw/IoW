@@ -47,9 +47,9 @@ class VibrationSensor(Process, EdgiseBase):
             self.info("Raw Value Vibration: {}".format(raw_val))
             data = {'vibrationSensorData':
                 {
-                    'RawVal': raw_val
+                    'rawVal': raw_val
                 }
             }
             measurement = {'data': data}
-            self._output_q.put_nowait({'event':json.dumps(measurement)})
+            self._output_q.put_nowait({'event': json.dumps(measurement)})
             time.sleep(10)
