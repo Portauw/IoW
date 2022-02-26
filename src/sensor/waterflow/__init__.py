@@ -22,7 +22,7 @@ class WaterflowSensor(Process, EdgiseBase):
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self._config_dict['Pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self._config_dict['Pin'], GPIO.FALLING, callback=self.count_sensor_pulse, bounce=1)
+        GPIO.add_event_detect(self._config_dict['Pin'], GPIO.FALLING, callback=self.count_sensor_pulse)
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name=self._name, logging_q=logging_q)
