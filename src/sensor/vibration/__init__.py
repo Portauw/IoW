@@ -34,10 +34,6 @@ class VibrationSensor(Process, EdgiseBase):
         self.info("Starting vibration sensor")
 
         while not self._stop_event.is_set():
-            # measurement = {'deviceId': cfg.deviceId,
-            #                'projectId': cfg.projectId,
-            #                'timeStamp': time.time()
-            #                }
 
             self.i2c_lock.acquire()
             try:
