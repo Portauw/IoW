@@ -10,7 +10,7 @@ CRT_PATH = 'src/platform_sync/security/certificate.pem.crt'
 KEY_PATH = 'src/platform_sync/security/private.pem.key'
 ROOT_PEM = 'src/platform_sync/security/AmazonRootCA1.pem'
 
-REGISTRATION_URL = "https://platform.edgise.com/api/registration"
+REGISTRATION_URL = "https://platform-test.edgise.com/api/registration"
 
 LOGGING_LEVELS = ["ERR",
                   "INF",

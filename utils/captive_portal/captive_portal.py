@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, request, redirect, render_template
 import os
 import subprocess
@@ -25,37 +27,41 @@ def get_ssid_list():
     return ssids_list
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/captive_portal_step_form", methods=['GET', 'POST'])
 def index():
     print(request.method)
     if request.method == 'POST':
-        if request.form.get('btn_value') == 'Send':
-            # pass
-            ssid = request.form['ssid']
-            if ssid == "SSID not listed":
-                ssid = request.form['other_ssid']
-                print(f"other SSID selected : {ssid}")
-            password = request.form['password']
-            os.system(f"nmcli con delete telly_con")
-            os.system(f"nmcli c add type wifi con-name telly_con ifname wlan0 ssid '{ssid}'")
-            os.system(f"nmcli c modify telly_con wifi-sec.key-mgmt wpa-psk wifi-sec.psk '{password}'")
+        # if request.form.get('btn_value') == 'Send':
+        # pass
+        ssid = request.form['ssid']
+        if ssid == "SSID not listed":
+            ssid = request.form['other_ssid']
+            print(f"other SSID selected : {ssid}")
+        password = request.form['password']
+        os.system(f"nmcli con delete telly_con")
+        os.system(f"nmcli c add type wifi con-name telly_con ifname wlan0 ssid '{ssid}'")
+        os.system(f"nmcli c modify telly_con wifi-sec.key-mgmt wpa-psk wifi-sec.psk '{password}'")
 
-            try:
-                output = subprocess.check_output(["nmcli", "con", "up", "telly_con"])
-                print("SUCCESS SUCCESS SUCCESS")
+        try:
+            output = subprocess.check_output(["nmcli", "con", "up", "telly_con"])
+            print("SUCCESS SUCCESS SUCCESS")
 
-                func = request.environ.get('werkzeug.server.shutdown')
-                if func is None:
-                    raise RuntimeError('Not running with the Werkzeug Server')
-                func()
+            with open('user_register.json', 'w') as f:
+                json.dump(request.form, f)
+            return render_template('user_registration_saved.html')
 
-                # quit_app()
+            func = request.environ.get('werkzeug.server.shutdown')
+            if func is None:
+                raise RuntimeError('Not running with the Werkzeug Server')
+            func()
 
-            except Exception as e:
-                print(f"FAILED FAILED FAILED ...  Exception : {e}")
-                os.system(f"nmcli con up hotspot")
+            # quit_app()
 
-    return render_template("login.html", data=ssid_list)
+        except Exception as e:
+            print(f"FAILED FAILED FAILED ...  Exception : {e}")
+            os.system(f"nmcli con up hotspot")
+
+    return render_template("captive_portal_step_form.html", data=ssid_list)
 
 
 @app.route('/', defaults={'path': ''})
@@ -69,6 +75,14 @@ def ison():
     return "hello"
 
 
+# @app.route('save_json', methods='POST')
+# def save_json():
+#     # if request.method == 'POST':
+#     with open('user_register.json', 'w') as f:
+#         json.dump(request.form, f)
+#     return render_template('your_template.html')
+
+
 @app.route('/retry_telly_con')
 def retry_telly_con():
     try:
@@ -76,7 +90,7 @@ def retry_telly_con():
         time.sleep(0.5)
         os.system('nmcli dev wifi rescan')
         time.sleep(0.5)
-        output = subprocess.check_output(["nmcli", "con", "up", "telly_con"])
+        #output = subprocess.check_output(["nmcli", "con", "up", "telly_con"])
         print("telly_con worked, quitting captive portal")
 
         func = request.environ.get('werkzeug.server.shutdown')
@@ -102,34 +116,34 @@ def retry_telly_con():
 
 
 if __name__ == '__main__':
-
     selected_ssid = ""
     selected_psk = ""
 
-    os.system(f"nmcli con down hotspot")
-    os.system(f"nmcli con down telly_con")
+    # os.system(f"nmcli con down hotspot")
+    # os.system(f"nmcli con down telly_con")
 
     time.sleep(0.5)
 
-    os.system(f"nmcli con delete hotspot")
+    # os.system(f"nmcli con delete hotspot")
 
     time.sleep(0.5)
 
     # Get the list of SSID's available
-    ssid_list = get_ssid_list()
+    # ssid_list = get_ssid_list()
+    ssid_list = ["test"]
 
     c = 0
     while len(ssid_list) < 3 and c < 5:
-        c += 1
-        print("didn't find any SSID, trying again")
-        os.system("nmcli con down hotspot")
-        os.system("nmcli con down telly_con")
-        ssid_list = get_ssid_list()
+       c += 1
+       print("didn't find any SSID, trying again")
+    # os.system("nmcli con down hotspot")
+    #  os.system("nmcli con down telly_con")
+    #   ssid_list = get_ssid_list()
 
-    print(f"found {len(ssid_list)} SSID's")
+    # print(f"found {len(ssid_list)} SSID's")
 
-    os.system(f"nmcli con add type wifi ifname wlan0 con-name hotspot autoconnect yes ssid 'Telly Hotspot {getmac.get_mac_address('wlan0')}'")
-    os.system(f"nmcli con modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared")
-    os.system(f"nmcli con up hotspot")
+    # os.system(f"nmcli con add type wifi ifname wlan0 con-name hotspot autoconnect yes ssid 'Telly Hotspot {getmac.get_mac_address('wlan0')}'")
+    # os.system(f"nmcli con modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared")
+    # os.system(f"nmcli con up hotspot")
 
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8000)

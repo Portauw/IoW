@@ -14,7 +14,7 @@ class Config:
         self.modelPath: str = ''
         self.zones: List[Dict] = []
         self.deviceId: str = ''
-        self.projectId: str = ''
+        self.projectId: str = '5f621f722f3bba6a6ec555fe'
         self.screenUpdateInterval: float = 0.3
         self.eventSyncInterval: float = 0.5
         self.stateSyncInterval: float = 600

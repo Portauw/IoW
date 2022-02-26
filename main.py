@@ -65,11 +65,10 @@ class Handler(EdgiseBase):
         }
 
         config_json = json.dumps(AC_sensor_config)
-        # print(type(config_list))
 
         self._ac_sensor = ACSensor(stop_event=self._stop_event,
                                    logging_q=self._logging_q,
-                                   input_q=self._input_ac_q,
+                                   input_q=None,
                                    output_q=self._mqtt_send_q,
                                    config_dict=AC_sensor_config,
                                    resource_lock=self._i2c_lock
@@ -91,7 +90,7 @@ class Handler(EdgiseBase):
 
         self._environment_sensor = EnvironmentSensor(stop_event=self._stop_event,
                                                      logging_q=self._logging_q,
-                                                     input_q=self._input_env_q,
+                                                     input_q=None,
                                                      output_q=self._mqtt_send_q,
                                                      config_dict=self.env_sensor_config,
                                                      resource_lock=self._i2c_lock
@@ -112,7 +111,7 @@ class Handler(EdgiseBase):
 
         self._vibration_sensor = VibrationSensor(stop_event=self._stop_event,
                                                  logging_q=self._logging_q,
-                                                 input_q=self._input_vibration_q,
+                                                 input_q=None,
                                                  output_q=self._mqtt_send_q,
                                                  config_dict=vibration_sensor_config,
                                                  resource_lock=self._i2c_lock
@@ -124,20 +123,19 @@ class Handler(EdgiseBase):
         # self._output_wf_q = Queue()
         #
         # # connect waterflow sensor to analog port
-        # wf_sensor_config = {
-        #     'name': 'Waterflow sensor',
-        #     'Pin': '13',
-        #     'Type': 'INPUT',
-        #     'Unit': 'MHz',
-        # }
-        #
-        # self._wf_sensor = WaterflowSensor(stop_event=self._stop_event,
-        #                                   logging_q=self._logging_q,
-        #                                   input_q=self._input_wf_q,
-        #                                   output_q=self._output_wf_q,
-        #                                   config=wf_sensor_config
-        #                                   )
-        # self._services.append(self._wf_sensor)
+        wf_sensor_config = {
+            'name': 'Waterflow sensor',
+            'Pin': '13',
+            'Type': 'INPUT',
+        }
+
+        self._wf_sensor = WaterflowSensor(stop_event=self._stop_event,
+                                          logging_q=self._logging_q,
+                                          input_q=None,
+                                          output_q=self._mqtt_send_q,
+                                          config_dict=wf_sensor_config
+                                          )
+        self._services.append(self._wf_sensor)
 
         # Initialze MQTT process
         self.edgise_mqtt = EdgiseMQTT(stop_event=self._stop_event,

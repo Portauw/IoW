@@ -83,7 +83,7 @@ button:hover {
 </style>
 <body>
 
-<form id="regForm" method="post" action="/">
+<form id="regForm" method="post" action="/captive_portal_step_form">
   <h1> Welkom bij IoW</h1>
   <h2>Via dit scherm kan u het toestel toegang geven tot uw WiFi netwerk en basisgegevens van de wasmachine meegeven:</h2>
   <!-- One "tab" for each step in the form: -->
@@ -91,24 +91,24 @@ button:hover {
     <p><select placeholder="SSID..." oninput="this.className = ''" id="ssid" name="ssid">
           {% for item in data %}
                     <option value="{{ item }}">{{ item }}</option>
-                {% endfor %}
+          {% endfor %}
     </select>
 
     </p>
-    <p><input placeholder="Password..." oninput="this.className = ''" name="password" type="password"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" id="password" name="password" type="password"></p>
   </div>
   <div class="tab">wasmachine gegevens:
-    <p><input placeholder="Merk..." oninput="this.className = ''" name="brand"></p>
-    <p><input placeholder="Model..." oninput="this.className = ''" name="model"></p>
+    <p><input placeholder="Merk..." oninput="this.className = ''" id="merk" name="brand"></p>
+    <p><input placeholder="Model..." oninput="this.className = ''" id="model" name="model"></p>
 
-    <p><select placeholder="nieuw/refurbished" oninput="this.className = ''" name="type">
+    <p><select placeholder="nieuw/refurbished" oninput="this.className = ''" id="nieuw/refurbished" name="type">
       <option value="nieuw">Nieuw</option>
-      <option value="refurbished"> Refurbished</option>
+      <option value="refurbished">Refurbished</option>
     </select>
     </p>
   </div>
   <div class="tab">Installatiedatum:
-    <p><input oninput="this.className = ''" name="dd" type="date"></p>
+    <p><input oninput="this.className = ''" id="dd" name="dd" type="date"></p>
 <!--    <p><input placeholder="mm" oninput="this.className = ''" name="nn" type="month"></p>-->
 <!--    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy" type=""></p>-->
   </div>
@@ -120,6 +120,7 @@ button:hover {
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+
     </div>
   </div>
   <!-- Circles which indicates the steps of the form: -->
