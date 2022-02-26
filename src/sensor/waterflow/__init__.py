@@ -7,9 +7,9 @@ import RPi.GPIO as GPIO
 import time
 
 
-def count_sensor_pulse((start_counter, pulse_count)):
-    if start_counter:
-        pulse_count += 1
+def count_sensor_pulse(counter_tuple):
+    if counter_tuple[0]:
+        counter_tuple[1] += 1
 
 
 class WaterflowSensor(Process, EdgiseBase):
