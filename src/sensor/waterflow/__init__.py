@@ -41,7 +41,6 @@ class WaterflowSensor(Process, EdgiseBase):
         GPIO.add_event_detect(self._config_dict['Pin'], GPIO.FALLING, callback=self.count_sensor_pulse)
 
         while not self._stop_event.is_set():
-            measurement_dict = self._input_q.get_nowait()
             self.start_counter = 1
             time.sleep(1)
             self.start_counter = 0
@@ -50,10 +49,13 @@ class WaterflowSensor(Process, EdgiseBase):
             flow_min = (raw_val / 6.6)
             flow_h = (raw_val * 60) / 6.6
             self.pulse_count = 0
-            self.info("Raw Value: {}".format(raw_val))
+            self.info("rawVal: {}".format(raw_val))
+            self.info("flowSec: {}".format(flow_s))
+            self.info("flowMin: {}".format(flow_min))
+            self.info("flowHour: {}".format(flow_h))
 
             data = {'waterflowSensorData': {
-                'RawVal': raw_val,
+                'rawVal': raw_val,
                 'flowSec': flow_s,
                 'flowMin': flow_min,
                 'flowHour': flow_h
