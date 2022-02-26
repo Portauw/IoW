@@ -125,7 +125,7 @@ class Handler(EdgiseBase):
         # # connect waterflow sensor to analog port
         wf_sensor_config = {
             'name': 'Waterflow sensor',
-            'Pin': '13',
+            'Pin': 13,
             'Type': 'INPUT',
         }
 
