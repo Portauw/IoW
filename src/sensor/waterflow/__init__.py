@@ -5,8 +5,11 @@ from src.base import EdgiseBase
 
 import RPi.GPIO as GPIO
 import time
-from config import cfg
-import sys
+
+
+def count_sensor_pulse(start_counter, pulse_count):
+    if start_counter:
+        pulse_count += 1
 
 
 class WaterflowSensor(Process, EdgiseBase):
@@ -22,7 +25,8 @@ class WaterflowSensor(Process, EdgiseBase):
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self._config_dict['Pin'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self._config_dict['Pin'], GPIO.FALLING, callback=self.count_sensor_pulse)
+        GPIO.add_event_detect(self._config_dict['Pin'], GPIO.FALLING,
+                              callback=lambda x, y: count_sensor_pulse(self.start_counter, self.pulse_count))
 
         Process.__init__(self)
         EdgiseBase.__init__(self, name=self._name, logging_q=logging_q)
@@ -34,13 +38,8 @@ class WaterflowSensor(Process, EdgiseBase):
         #           "SensorType":""
         #           }
 
-    def count_sensor_pulse(self):
-        if self.start_counter:
-            self.pulse_count += 1
-
     def run(self) -> None:
         self.info("Starting Waterflow sensor")
-
 
         while not self._stop_event.is_set():
             self.start_counter = 1
