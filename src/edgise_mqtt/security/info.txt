@@ -1,0 +1,1 @@
+# Place Amazon security files for MQTT in this folder

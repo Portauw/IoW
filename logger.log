@@ -1,0 +1,341 @@
+2020-06-03 15:36:49,225 ERROR: [NEXTION] While importing serial, an exception occured : No module named 'serial'. This is normal if you are not running on a Raspberry Pi with pyserial
+2020-06-03 15:36:49,273 INFO: [MAIN] Initializing application
+2020-06-03 15:36:49,273 DEBUG: Could not find file: '/proc/net/route'
+2020-06-03 15:36:49,298 DEBUG: Raw MAC found: a4:83:e7:4c:f3:5f
+2020-06-03 15:36:49,322 INFO: [DB] DB non existent : creating @ sqlite:///:memory:
+2020-06-03 15:39:17,176 ERROR: [NEXTION] While importing serial, an exception occured : No module named 'serial'. This is normal if you are not running on a Raspberry Pi with pyserial
+2020-06-03 15:39:17,209 INFO: [MAIN] Initializing application
+2020-06-03 15:39:17,210 DEBUG: Could not find file: '/proc/net/route'
+2020-06-03 15:39:17,225 DEBUG: Raw MAC found: a4:83:e7:4c:f3:5f
+2020-06-03 15:39:17,240 INFO: [DB] DB non existent : creating @ sqlite:///:memory:
+2020-06-03 15:39:21,243 ERROR: [NEXTION] While importing serial, an exception occured : No module named 'serial'. This is normal if you are not running on a Raspberry Pi with pyserial
+2020-06-03 15:39:21,263 INFO: [MAIN] Initializing application
+2020-06-03 15:39:21,263 DEBUG: Could not find file: '/proc/net/route'
+2020-06-03 15:39:21,278 DEBUG: Raw MAC found: a4:83:e7:4c:f3:5f
+2020-06-03 15:39:21,286 INFO: [DB] DB non existent : creating @ sqlite:///:memory:
+2020-06-03 15:39:28,871 ERROR: [NEXTION] While importing serial, an exception occured : No module named 'serial'. This is normal if you are not running on a Raspberry Pi with pyserial
+2020-06-03 15:39:28,889 INFO: [MAIN] Initializing application
+2020-06-03 15:39:28,889 DEBUG: Could not find file: '/proc/net/route'
+2020-06-03 15:39:28,903 DEBUG: Raw MAC found: a4:83:e7:4c:f3:5f
+2020-06-03 15:39:28,911 INFO: [DB] DB non existent : creating @ sqlite:///:memory:
+2020-06-03 15:39:32,886 INFO: [DB] DB non existent : creating @ sqlite:///:memory:
+2020-06-03 15:39:32,890 INFO: [MAIN] App initialization complete
+2020-06-03 15:39:32,890 INFO: [MAIN] Platform : posix.uname_result(sysname='Darwin', nodename='Turbos-MBP.iconos.be', release='19.4.0', version='Darwin Kernel Version 19.4.0: Wed Mar  4 22:28:40 PST 2020; root:xnu-6153.101.6~15/RELEASE_X86_64', machine='x86_64')
+2020-06-03 15:39:32,890 INFO: [REG] Already registered
+2020-06-03 15:39:32,890 INFO: [REG] Quitting register process
+2020-06-03 15:39:32,890 INFO: [UPDATE] No update branch set, not updating. Sleeping for 1800
+2020-06-03 15:39:32,901 ERROR: [DBCLEAN] Received SQLAlchemyError (sqlite3.OperationalError) no such table: platform_sync
+[SQL: SELECT ids_id FROM platform_sync INNER JOIN intra_day_second_data ON platform_sync.ids_id = intra_day_second_data.id AND intra_day_second_data.is_synced = 1]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-05-12 17:18:27,275 INFO: [MQTT] Connected
+2020-05-12 17:18:27,275 INFO: [MQTT] Subscribing to config messages
+2020-05-12 17:18:27,322 INFO: [MQTT] Config received @ cfg/devices/5ebab5a8bb134f0001c3c61f : b'{"projectId":"5ebab4cbbb134f0001c3c60b","deviceId":"5ebab5a8bb134f0001c3c61f","deviceConfig":null}'
+2020-05-12 17:18:27,322 ERROR: [MQTT] New config : Received TypeError 'NoneType' object is not subscriptable -- This might be normal when no platform configuration has been set yet
+2020-05-12 17:18:27,347 INFO: [MQTT] subscribed to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/state' : QoS.AT_LEAST_ONCE
+2020-05-12 17:18:27,347 INFO: [MQTT] Subscribing to counting messages
+2020-05-12 17:18:27,469 INFO: [MQTT] subscribed to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/counting' : QoS.AT_LEAST_ONCE
+2020-05-12 17:18:27,943 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:18:28,854 INFO: [VIDEO PROCESSOR] person left
+2020-05-12 17:18:29,640 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:18:30,207 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:18:31,042 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:18:31,757 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:18:32,641 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:18:33,992 ERROR: Exception during reset or similar
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 693, in _finalize_fairy
+    fairy._reset(pool)
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 880, in _reset
+    pool._dialect.do_rollback(self)
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 540, in do_rollback
+    dbapi_connection.rollback()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 123145406259200 and this is thread id 4710157760.
+2020-05-12 17:18:33,996 ERROR: Exception closing connection <sqlite3.Connection object at 0x7fb7e8cd1f10>
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 693, in _finalize_fairy
+    fairy._reset(pool)
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 880, in _reset
+    pool._dialect.do_rollback(self)
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 540, in do_rollback
+    dbapi_connection.rollback()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 123145406259200 and this is thread id 4710157760.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 270, in _close_connection
+    self._dialect.do_close(connection)
+  File "/opt/miniconda3/envs/jef_mensen_tellen/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 546, in do_close
+    dbapi_connection.close()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 123145406259200 and this is thread id 4710157760.
+2020-05-12 17:19:35,905 ERROR: [NEXTION] While importing serial, an exception occured : No module named 'serial'. This is normal if you are not running on a Raspberry Pi with pyserial
+2020-05-12 17:19:36,557 INFO: [MAIN] Initializing application
+2020-05-12 17:19:36,557 DEBUG: Could not find file: '/proc/net/route'
+2020-05-12 17:19:36,573 DEBUG: Raw MAC found: a4:83:e7:4c:f3:5f
+2020-05-12 17:19:39,319 INFO: [MAIN] App initialization complete
+2020-05-12 17:19:39,319 INFO: [MAIN] Platform : posix.uname_result(sysname='Darwin', nodename='Turbos-MacBook-Pro.local', release='19.4.0', version='Darwin Kernel Version 19.4.0: Wed Mar  4 22:28:40 PST 2020; root:xnu-6153.101.6~15/RELEASE_X86_64', machine='x86_64')
+2020-05-12 17:19:39,320 INFO: [REG] Already registered
+2020-05-12 17:19:39,320 INFO: [UPDATE] No update branch set, not updating. Sleeping for 1800
+2020-05-12 17:19:39,320 INFO: [REG] Quitting register process
+2020-05-12 17:19:39,324 ERROR: [DBCLEAN] Received SQLAlchemyError (sqlite3.OperationalError) no such table: intra_day_second_data
+[SQL: SELECT ids_id FROM platform_sync INNER JOIN intra_day_second_data ON platform_sync.ids_id = intra_day_second_data.id AND intra_day_second_data.is_synced = 1]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-05-12 17:19:39,826 INFO: [MQTT] Connected
+2020-05-12 17:19:39,827 INFO: [MQTT] Subscribing to config messages
+2020-05-12 17:19:39,880 INFO: [MQTT] Config received @ cfg/devices/5ebab5a8bb134f0001c3c61f : b'{"projectId":"5ebab4cbbb134f0001c3c60b","deviceId":"5ebab5a8bb134f0001c3c61f","deviceConfig":null}'
+2020-05-12 17:19:39,880 ERROR: [MQTT] New config : Received TypeError 'NoneType' object is not subscriptable -- This might be normal when no platform configuration has been set yet
+2020-05-12 17:19:39,896 INFO: [MQTT] subscribed to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/state' : QoS.AT_LEAST_ONCE
+2020-05-12 17:19:39,896 INFO: [MQTT] Subscribing to counting messages
+2020-05-12 17:19:39,992 INFO: [MQTT] Config received @ cfg/devices/5ebab5a8bb134f0001c3c61f : b'{"projectId":"5ebab4cbbb134f0001c3c60b","deviceId":"5ebab5a8bb134f0001c3c61f","deviceConfig":null}'
+2020-05-12 17:19:39,993 ERROR: [MQTT] New config : Received TypeError 'NoneType' object is not subscriptable -- This might be normal when no platform configuration has been set yet
+2020-05-12 17:19:40,032 INFO: [MQTT] subscribed to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/counting' : QoS.AT_LEAST_ONCE
+2020-05-12 17:19:40,062 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294436}
+2020-05-12 17:19:40,063 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589294437}
+2020-05-12 17:19:40,063 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294438}
+2020-05-12 17:19:40,063 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294438}
+2020-05-12 17:19:40,063 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294439}
+2020-05-12 17:19:40,063 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294440}
+2020-05-12 17:19:40,063 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294441}
+2020-05-12 17:19:40,064 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294442}
+2020-05-12 17:19:40,064 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589294443}
+2020-05-12 17:19:40,064 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294445}
+2020-05-12 17:19:40,064 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294445}
+2020-05-12 17:19:40,064 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294505}
+2020-05-12 17:19:40,064 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589294506}
+2020-05-12 17:19:40,064 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294507}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294507}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294508}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294509}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294510}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294511}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589294512}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294514}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294514}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294515}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294516}
+2020-05-12 17:19:40,065 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294517}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294522}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294525}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589294527}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294528}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294529}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589294529}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294531}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294536}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589294540}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294542}
+2020-05-12 17:19:40,066 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589294543}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296672}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589296673}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296674}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296674}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296675}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296676}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296677}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296678}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589296679}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296681}
+2020-05-12 17:19:40,067 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296681}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296682}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296682}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296683}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296707}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589296708}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296709}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296710}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296711}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296711}
+2020-05-12 17:19:40,068 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296712}
+2020-05-12 17:19:40,506 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":1,"exitedCount":0,"date":"2020-05-12","actualCount":1}'
+2020-05-12 17:19:40,523 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:41,188 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":2,"exitedCount":0,"date":"2020-05-12","actualCount":2}'
+2020-05-12 17:19:41,427 INFO: [VIDEO PROCESSOR] person left
+2020-05-12 17:19:41,469 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":3,"exitedCount":1,"date":"2020-05-12","actualCount":2}'
+2020-05-12 17:19:41,478 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":3,"exitedCount":1,"date":"2020-05-12","actualCount":2}'
+2020-05-12 17:19:41,565 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":5,"exitedCount":1,"date":"2020-05-12","actualCount":4}'
+2020-05-12 17:19:41,586 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":5,"exitedCount":1,"date":"2020-05-12","actualCount":4}'
+2020-05-12 17:19:41,686 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":7,"exitedCount":1,"date":"2020-05-12","actualCount":6}'
+2020-05-12 17:19:41,694 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":7,"exitedCount":1,"date":"2020-05-12","actualCount":6}'
+2020-05-12 17:19:42,201 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:42,481 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":10,"exitedCount":1,"date":"2020-05-12","actualCount":9}'
+2020-05-12 17:19:42,593 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":12,"exitedCount":3,"date":"2020-05-12","actualCount":9}'
+2020-05-12 17:19:42,594 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":14,"exitedCount":3,"date":"2020-05-12","actualCount":11}'
+2020-05-12 17:19:42,595 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":12,"exitedCount":3,"date":"2020-05-12","actualCount":9}'
+2020-05-12 17:19:42,597 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":14,"exitedCount":3,"date":"2020-05-12","actualCount":11}'
+2020-05-12 17:19:42,598 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":14,"exitedCount":3,"date":"2020-05-12","actualCount":11}'
+2020-05-12 17:19:42,600 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":10,"exitedCount":2,"date":"2020-05-12","actualCount":8}'
+2020-05-12 17:19:42,768 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:43,494 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":20,"exitedCount":4,"date":"2020-05-12","actualCount":16}'
+2020-05-12 17:19:43,495 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":20,"exitedCount":4,"date":"2020-05-12","actualCount":16}'
+2020-05-12 17:19:43,495 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":17,"exitedCount":4,"date":"2020-05-12","actualCount":13}'
+2020-05-12 17:19:43,496 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":20,"exitedCount":4,"date":"2020-05-12","actualCount":16}'
+2020-05-12 17:19:43,512 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":19,"exitedCount":4,"date":"2020-05-12","actualCount":15}'
+2020-05-12 17:19:43,585 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":21,"exitedCount":5,"date":"2020-05-12","actualCount":16}'
+2020-05-12 17:19:43,594 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":21,"exitedCount":5,"date":"2020-05-12","actualCount":16}'
+2020-05-12 17:19:43,595 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":24,"exitedCount":5,"date":"2020-05-12","actualCount":19}'
+2020-05-12 17:19:43,597 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":23,"exitedCount":5,"date":"2020-05-12","actualCount":18}'
+2020-05-12 17:19:43,604 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":24,"exitedCount":5,"date":"2020-05-12","actualCount":19}'
+2020-05-12 17:19:43,606 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:44,343 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:44,480 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":26,"exitedCount":5,"date":"2020-05-12","actualCount":21}'
+2020-05-12 17:19:44,491 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":26,"exitedCount":5,"date":"2020-05-12","actualCount":21}'
+2020-05-12 17:19:44,493 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":26,"exitedCount":5,"date":"2020-05-12","actualCount":21}'
+2020-05-12 17:19:44,511 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":26,"exitedCount":5,"date":"2020-05-12","actualCount":21}'
+2020-05-12 17:19:44,522 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,535 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,568 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,585 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,591 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,591 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,591 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,592 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,593 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,595 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":32,"exitedCount":7,"date":"2020-05-12","actualCount":25}'
+2020-05-12 17:19:44,686 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":35,"exitedCount":7,"date":"2020-05-12","actualCount":28}'
+2020-05-12 17:19:45,083 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296780}
+2020-05-12 17:19:45,083 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589296781}
+2020-05-12 17:19:45,084 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296782}
+2020-05-12 17:19:45,084 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296782}
+2020-05-12 17:19:45,084 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296783}
+2020-05-12 17:19:45,084 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296784}
+2020-05-12 17:19:45,203 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:45,486 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":40,"exitedCount":7,"date":"2020-05-12","actualCount":33}'
+2020-05-12 17:19:45,495 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":40,"exitedCount":7,"date":"2020-05-12","actualCount":33}'
+2020-05-12 17:19:45,506 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":40,"exitedCount":7,"date":"2020-05-12","actualCount":33}'
+2020-05-12 17:19:45,513 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":42,"exitedCount":8,"date":"2020-05-12","actualCount":34}'
+2020-05-12 17:19:45,519 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":42,"exitedCount":8,"date":"2020-05-12","actualCount":34}'
+2020-05-12 17:19:45,519 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":42,"exitedCount":8,"date":"2020-05-12","actualCount":34}'
+2020-05-12 17:19:45,582 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":44,"exitedCount":9,"date":"2020-05-12","actualCount":35}'
+2020-05-12 17:19:45,593 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":43,"exitedCount":9,"date":"2020-05-12","actualCount":34}'
+2020-05-12 17:19:45,593 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":44,"exitedCount":9,"date":"2020-05-12","actualCount":35}'
+2020-05-12 17:19:45,594 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":44,"exitedCount":9,"date":"2020-05-12","actualCount":35}'
+2020-05-12 17:19:45,687 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":47,"exitedCount":10,"date":"2020-05-12","actualCount":37}'
+2020-05-12 17:19:45,699 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":46,"exitedCount":10,"date":"2020-05-12","actualCount":36}'
+2020-05-12 17:19:45,700 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":47,"exitedCount":10,"date":"2020-05-12","actualCount":37}'
+2020-05-12 17:19:45,785 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":48,"exitedCount":10,"date":"2020-05-12","actualCount":38}'
+2020-05-12 17:19:45,795 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":48,"exitedCount":10,"date":"2020-05-12","actualCount":38}'
+2020-05-12 17:19:45,795 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":48,"exitedCount":10,"date":"2020-05-12","actualCount":38}'
+2020-05-12 17:19:45,796 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":48,"exitedCount":10,"date":"2020-05-12","actualCount":38}'
+2020-05-12 17:19:45,904 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":50,"exitedCount":11,"date":"2020-05-12","actualCount":39}'
+2020-05-12 17:19:45,909 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":49,"exitedCount":11,"date":"2020-05-12","actualCount":38}'
+2020-05-12 17:19:45,910 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":49,"exitedCount":11,"date":"2020-05-12","actualCount":38}'
+2020-05-12 17:19:45,982 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":50,"exitedCount":11,"date":"2020-05-12","actualCount":39}'
+2020-05-12 17:19:45,994 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":52,"exitedCount":11,"date":"2020-05-12","actualCount":41}'
+2020-05-12 17:19:46,010 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":52,"exitedCount":11,"date":"2020-05-12","actualCount":41}'
+2020-05-12 17:19:46,657 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:47,639 INFO: [VIDEO PROCESSOR] person left
+2020-05-12 17:19:49,078 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:49,369 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:50,092 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296785}
+2020-05-12 17:19:50,092 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296786}
+2020-05-12 17:19:50,092 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": false, "timestamp": 1589296787}
+2020-05-12 17:19:50,092 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296789}
+2020-05-12 17:19:50,093 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296789}
+2020-05-12 17:19:50,287 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:50,573 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":53,"exitedCount":11,"date":"2020-05-12","actualCount":42}'
+2020-05-12 17:19:50,573 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":55,"exitedCount":12,"date":"2020-05-12","actualCount":43}'
+2020-05-12 17:19:50,573 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":55,"exitedCount":12,"date":"2020-05-12","actualCount":43}'
+2020-05-12 17:19:50,587 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":55,"exitedCount":12,"date":"2020-05-12","actualCount":43}'
+2020-05-12 17:19:50,652 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":56,"exitedCount":12,"date":"2020-05-12","actualCount":44}'
+2020-05-12 17:19:50,976 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:51,798 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:19:55,098 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296790}
+2020-05-12 17:19:55,098 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296790}
+2020-05-12 17:19:55,098 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296791}
+2020-05-12 17:19:55,557 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":57,"exitedCount":12,"date":"2020-05-12","actualCount":45}'
+2020-05-12 17:19:55,636 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":58,"exitedCount":12,"date":"2020-05-12","actualCount":46}'
+2020-05-12 17:19:55,732 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":59,"exitedCount":12,"date":"2020-05-12","actualCount":47}'
+2020-05-12 17:19:56,914 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:20:00,103 INFO: [MQTT] Publishing count to topic 'dt/projects/5ebab4cbbb134f0001c3c60b/devices/5ebab5a8bb134f0001c3c61f/events' : {"entered": true, "timestamp": 1589296796}
+2020-05-12 17:20:00,323 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:20:00,554 INFO: [MQTT] counting received @ dt/projects/5ebab4cbbb134f0001c3c60b/counting : b'{"projectId":"5ebab4cbbb134f0001c3c60b","projectName":"5ebab4cbbb134f0001c3c60b","maxAllowed":200,"enteredCount":60,"exitedCount":12,"date":"2020-05-12","actualCount":48}'
+2020-05-12 17:29:45,477 ERROR: [NEXTION] While importing serial, an exception occured : No module named 'serial'. This is normal if you are not running on a Raspberry Pi with pyserial
+2020-05-12 17:29:46,583 INFO: [MAIN] Initializing application
+2020-05-12 17:29:46,583 DEBUG: Could not find file: '/proc/net/route'
+2020-05-12 17:29:46,599 DEBUG: Raw MAC found: a4:83:e7:4c:f3:5f
+2020-05-12 17:29:49,340 INFO: [MAIN] App initialization complete
+2020-05-12 17:29:49,341 INFO: [MAIN] Platform : posix.uname_result(sysname='Darwin', nodename='Turbos-MacBook-Pro.local', release='19.4.0', version='Darwin Kernel Version 19.4.0: Wed Mar  4 22:28:40 PST 2020; root:xnu-6153.101.6~15/RELEASE_X86_64', machine='x86_64')
+2020-05-12 17:29:49,341 INFO: [UPDATE] No update branch set, not updating. Sleeping for 1800
+2020-05-12 17:29:49,342 INFO: [MQTT] No device_id set yet, sleeping for 5 sec
+2020-05-12 17:29:49,346 ERROR: [DBCLEAN] Received SQLAlchemyError (sqlite3.OperationalError) no such table: intra_day_second_data
+[SQL: SELECT ids_id FROM platform_sync INNER JOIN intra_day_second_data ON platform_sync.ids_id = intra_day_second_data.id AND intra_day_second_data.is_synced = 1]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-05-12 17:29:49,383 DEBUG: Starting new HTTPS connection (1): platform.edgise.com:443
+2020-05-12 17:29:50,230 DEBUG: https://platform.edgise.com:443 "POST /api/registration HTTP/1.1" 200 None
+2020-05-12 17:29:50,232 INFO: Device ID : 5ebac0edece7fa000186dbd8
+2020-05-12 17:29:50,232 INFO: Certificate : -----BEGIN CERTIFICATE-----
+MIIDWTCCAkGgAwIBAgIUBYv8u8sraACRnu5Ju9heLvzYq8owDQYJKoZIhvcNAQEL
+BQAwTTFLMEkGA1UECwxCQW1hem9uIFdlYiBTZXJ2aWNlcyBPPUFtYXpvbi5jb20g
+SW5jLiBMPVNlYXR0bGUgU1Q9V2FzaGluZ3RvbiBDPVVTMB4XDTIwMDUxMjE1Mjc0
+OVoXDTQ5MTIzMTIzNTk1OVowHjEcMBoGA1UEAwwTQVdTIElvVCBDZXJ0aWZpY2F0
+ZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJwzkaWFwx5+gmO7qR+J
+cGew1+3EHqfpuO0fxEnnOO4yOVwlFEjS5ZzfI/y8XmGbH378Z2LVbqtKjKaPBZjk
+jM3P8Jl922Pslp6Hx+Z3TfV812TVukiLq5k3Aj8D1NKky4c7+vVJkUps97z1dJxY
+fH3CL9I/Sf15zgtmVoWcQNqdtNZ2Biel7yaZlkxTTxK93wzUh7vrpS8ZWSdjvFbP
+tjdSmDqAc2xWxZfglve9eXuhgFsjKfyu0xiuSeQel1S/o8fpVSK9jvNPLC+99KHr
+PkcM73TfgW1UqO48673svvVQAgz+UKSHO6+43SzeP9VhOndc9d0+GOTHp1REHxd4
+jVUCAwEAAaNgMF4wHwYDVR0jBBgwFoAUWUpP1jGzbj1eY+Psz3F9DCVRDvwwHQYD
+VR0OBBYEFGnM0rsLh309HbcoveS1CdfeIYcpMAwGA1UdEwEB/wQCMAAwDgYDVR0P
+AQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IBAQCtGSah2fzXIprciaToXvMqMlEM
+r/qS+UTAtDKU/vErZ4XzjJFqnWNYhjuVTXL06tTlX0VZPqUATNvDXLcJ85WSH97g
+Rv154MhNFUiFqLPuRBqTofkxH7EdjDRoIltSM1bv8Qd9YOGOdRLuQs8smB4SEjSh
+P0JnjCQ/fWcCO1BbVi4fMYzxXQhrSKKTcIDQXjfu0Eh+JV580b0F/ZOVPHky8zFb
+qa38gzDlAMfFqf6pMwogwOmtdPMV5Imtw7R2xtHJ8IZ4ecmvWgb29dmvHIyE7Ajd
+q1JTR5ATehJMJa0eg5qUlkiP5c8/534D4QPE3QuS8+0sb8NMlGyNA9PKw3Ri
+-----END CERTIFICATE-----
+
+2020-05-12 17:29:50,232 INFO: Root Certificate : -----BEGIN CERTIFICATE-----
+MIIDQTCCAimgAwIBAgITBmyfz5m/jAo54vB4ikPmljZbyjANBgkqhkiG9w0BAQsF
+ADA5MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6
+b24gUm9vdCBDQSAxMB4XDTE1MDUyNjAwMDAwMFoXDTM4MDExNzAwMDAwMFowOTEL
+MAkGA1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEZMBcGA1UEAxMQQW1hem9uIFJv
+b3QgQ0EgMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJ4gHHKeNXj
+ca9HgFB0fW7Y14h29Jlo91ghYPl0hAEvrAIthtOgQ3pOsqTQNroBvo3bSMgHFzZM
+9O6II8c+6zf1tRn4SWiw3te5djgdYZ6k/oI2peVKVuRF4fn9tBb6dNqcmzU5L/qw
+IFAGbHrQgLKm+a/sRxmPUDgH3KKHOVj4utWp+UhnMJbulHheb4mjUcAwhmahRWa6
+VOujw5H5SNz/0egwLX0tdHA114gk957EWW67c4cX8jJGKLhD+rcdqsq08p8kDi1L
+93FcXmn/6pUCyziKrlA4b9v7LWIbxcceVOF34GfID5yHI9Y/QCB/IIDEgEw+OyQm
+jgSubJrIqg0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMC
+AYYwHQYDVR0OBBYEFIQYzIU07LwMlJQuCFmcx7IQTgoIMA0GCSqGSIb3DQEBCwUA
+A4IBAQCY8jdaQZChGsV2USggNiMOruYou6r4lK5IpDB/G/wkjUu0yKGX9rbxenDI
+U5PMCCjjmCXPI6T53iHTfIUJrU6adTrCC2qJeHZERxhlbI1Bjjt/msv0tadQ1wUs
+N+gDS63pYaACbvXy8MWy7Vu33PqUXHeeE6V/Uq2V8viTO96LXFvKWlJbYK8U90vv
+o/ufQJVtMVT8QtPHRh8jrdkPSHCa2XV4cdFyQzR1bldZwgJcJmApzyMZFo6IQ6XU
+5MsI+yMRQ+hDKXJioaldXgjUkK642M4UwtBV8ob2xJNDd2ZhwLnoQdeXeGADbkpy
+rqXRfboQnoZsG4q5WTP468SQvvG5
+-----END CERTIFICATE-----
+
+2020-05-12 17:29:50,232 INFO: Private Key : -----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAnDORpYXDHn6CY7upH4lwZ7DX7cQep+m47R/ESec47jI5XCUU
+SNLlnN8j/LxeYZsffvxnYtVuq0qMpo8FmOSMzc/wmX3bY+yWnofH5ndN9XzXZNW6
+SIurmTcCPwPU0qTLhzv69UmRSmz3vPV0nFh8fcIv0j9J/XnOC2ZWhZxA2p201nYG
+J6XvJpmWTFNPEr3fDNSHu+ulLxlZJ2O8Vs+2N1KYOoBzbFbFl+CW9715e6GAWyMp
+/K7TGK5J5B6XVL+jx+lVIr2O808sL730oes+RwzvdN+BbVSo7jzrvey+9VACDP5Q
+pIc7r7jdLN4/1WE6d1z13T4Y5MenVEQfF3iNVQIDAQABAoIBAHaEclhDG/9BQjHm
+K7awE8e5WL0hd5k0L4pL9iWU+Y9SME+IGtH+oxXaAXY8fuhUSRuS6+cDxorVb87Y
+6ghOMb/frNDpu9MfqlDy+WwWzeIcLVpnCIcO4s7H/D5P6+VAAOXFTu9aOJFeCMMp
+Aqe2RA8vjhVazAs1pm7j4XZTTqoQm4zTyCtdhfnbz4rN+3cmm1VeHtdd72jVHBTT
+giVUi3M/roglFVUmN7LEIo3finYQUjneozSjlFYUHlO+0DdMtWhTHINPbYLQbM0D
+wlkR9YoxaM/QR/B0dHOrYymTLyAR4uafj6/jxMiN86i7WK5LMwikl1LIls0WOv/T
+3Pk4i6kCgYEAzqj/CxR7ewTaBz34Ur/A5dTc8k3yO+fXdqJlv0a8NNLwfHvRUe22
+tzA9a0co575dJtg/yUaBtwcznYgLzoMuE8s/oxTT2CH8/yoa/xX2ZUAfp6fIha8I
+vwmKDhAlpFyHsw5vfDzLCwJ31W+Mcj6SXpuDJK2Uj7zNJwuojE6WJmsCgYEAwX6N
+c+XCm3ekY78DfDh0NB/lmuZN+MaR6gvohpkeOFHINXdaOq2xRx9t7m0OT/+qI3wm
+Xv7v3y1O3sWLSKCn5EnssKbgfp5X/s3jiqe+shsVF3FdFSv2M5gydHcKSNJAe8K2
+dYQlUCv/zSD2kcoQc1SOyYoGLMH6EXaBNd07iz8CgYEAudA9sYqzFANivkw78Ls1
+B/GCz+LBwJdOpf6SmY9SPfTEAkmaBZ5FQSUAtGqBHw2M2BZsE99vVlAFWskuRHqy
+fV2sVEevyo+U2SDUsTLgHl2vmKFFrN2acZp0JPzju4rvAFIkb4KB1d5cPO5VS4tz
+M9mD6wCfqTXLCCZ1X+JxIw0CgYBaBeIT6PLI2Doweh9J/Q37blep4LqoIuKiTJYL
+gVOxCkOmtHfTUxpmp7XCtxRwnddvmQRVMDEz2WWXebsauDxElyw65/kMj+kK0Imr
+6e1r+fOvK3wOLJzoVkgrLXMofEGqEuZG+ItPqJjjvBFbtPJAZjfkhoXm7vzEgSkO
+gXaBiwKBgDqIjhjTbY5BwoyOqSQ9d2cFJrMQwCbXSA20YCAfnjDlwJ2ND8BVcI+9
+OIC1sFLCQphIF+fGXGs8/uWBJMhiOxkRtzQ4m6SaaVRwid5P+rnG0tDTb9m16Euc
+Lwp9WkPlguPICmhU8FRfbXzdVDxnpVKeEkx5/RUtyuh3z68AuXxb
+-----END RSA PRIVATE KEY-----
+
+2020-05-12 17:29:50,470 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:29:51,382 INFO: [VIDEO PROCESSOR] person left
+2020-05-12 17:29:52,153 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:29:52,712 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:29:53,559 INFO: [VIDEO PROCESSOR] person entered
+2020-05-12 17:29:54,278 INFO: [VIDEO PROCESSOR] person entered
