@@ -193,7 +193,7 @@ class Handler(EdgiseBase):
                 try:
                     self._logging_q.put_nowait(self.error(f"Unknown exception : {e}"))
                 except Exception as e:
-                    self.info(f"SHITTY ERROR! {e}")
+                    self.info(f"ERROR! {e}")
 
             if cmd == "RESTART":
                 self.stop()
@@ -204,7 +204,7 @@ class Handler(EdgiseBase):
 
 if __name__ == '__main__':
     with open(
-            f"{cfg.root_dir}/asciiart.telly") as f:  # The with keyword automatically closes the file when you are done
+            f"{cfg.root_dir}/Asciiart.iow") as f:  # The with keyword automatically closes the file when you are done
         print(f.read())
 
     logging_q = Queue()

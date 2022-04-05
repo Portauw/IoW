@@ -1,5 +1,6 @@
 from multiprocessing import Process, Event, Queue, Lock
 import time
+import numpy as np
 from src.base import EdgiseBase
 from grove.adc import ADC
 from config import cfg
@@ -27,8 +28,14 @@ class VibrationSensor(Process, EdgiseBase):
         #           }
 
     def read_sensor(self):
-        sensor_value = self.adc.read(self._config_dict['pin'])
-        return sensor_value
+        sample_list = []
+        sample_time = time.time() + 60
+        # ADC should sample at 100/ 400 kHz according to i2c
+        while time.time() < sample_time:
+            sample = self.adc.read(self._config_dict['pin'])
+            sample_list.append(sample)
+        freq = np.amax(np.real(np.fft.fft(sample_list)))
+        return freq
 
     def run(self) -> None:
         self.info("Starting vibration sensor")
@@ -40,10 +47,10 @@ class VibrationSensor(Process, EdgiseBase):
                 raw_val = self.read_sensor()
             finally:
                 self.i2c_lock.release()
-            self.info("Raw Value Vibration: {}".format(raw_val))
+            self.info("Frequency of Vibration: {}".format(raw_val))
             data = {'vibrationSensorData':
                 {
-                    'rawVal': raw_val
+                    'freqOfVibration': raw_val
                 }
             }
             measurement = {'data': data}
