@@ -8,11 +8,11 @@ import json
 
 
 class EnvironmentSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue, config_dict,
+    def __init__(self, stop_event: Event, logging_q: Queue, washcycle_q: Queue, output_q: Queue, config_dict,
                  resource_lock: Lock, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
-        self._input_q: Queue = input_q
+        self._washcycle_q: Queue = washcycle_q
         self._output_q: Queue = output_q
         self._config_dict = config_dict
         self.bme_sensor = bme280()
@@ -113,5 +113,6 @@ class EnvironmentSensor(Process, EdgiseBase):
                     }
                 }
                 measurement = {'data': data}
-                self._output_q.put_nowait({'event': json.dumps(measurement)})
+                if not self._washcycle_q.empty():
+                    self._output_q.put_nowait({'event': json.dumps(measurement)})
                 time.sleep(10)

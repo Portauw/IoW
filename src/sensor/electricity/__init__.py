@@ -11,11 +11,11 @@ import json
 
 
 class ACSensor(Process, EdgiseBase):
-    def __init__(self, stop_event: Event, logging_q: Queue, input_q: Queue, output_q: Queue,
+    def __init__(self, stop_event: Event, logging_q: Queue, washcycle_q: Queue, output_q: Queue,
                  config_dict, resource_lock: Lock, **kwargs):
         self._stop_event = stop_event
         self._logging_q: Queue = logging_q
-        self._input_q: Queue = input_q
+        self._washcycle_q: Queue = washcycle_q
         self._output_q: Queue = output_q
         self.RMS_voltage = 230
         self.VCC = 5
@@ -48,9 +48,16 @@ class ACSensor(Process, EdgiseBase):
     def avg_power_consumption(self, RMS_current):
         return self.RMS_voltage * RMS_current
 
+    def start_washcycle(self, raw_val, threshold):
+        if raw_val > threshold:
+            self._washcycle_q.put_nowait(True)
+        else:
+            self._washcycle_q.get_nowait()
+
     def run(self) -> None:
         self.info("Starting AC sensor")
         print(self._config_dict['name'])
+        threshold = 4 # not representable value
 
         while not self._stop_event.is_set():
 
@@ -59,6 +66,8 @@ class ACSensor(Process, EdgiseBase):
                 raw_val = self.read_sensor()
             finally:
                 self.i2c_lock.release()
+
+            self.start_washcycle(raw_val, threshold)
             self.info("Raw Value: {}".format(raw_val))
             amplitude_current = self.amplitude_current(raw_val)
             self.info("A I Value: {}".format(amplitude_current))
@@ -74,5 +83,6 @@ class ACSensor(Process, EdgiseBase):
                 'avgPower': avg_power
             }}
             measurement = {'data': data}
-            self._output_q.put_nowait({'event': json.dumps(measurement)})
+            if not self._washcycle_q.empty():
+                self._output_q.put_nowait({'event': json.dumps(measurement)})
             time.sleep(10)
