@@ -21,4 +21,6 @@
     "topicPrefix": "/",
     "platformApiUrl": "https://platform-test.edgise.com/api/",
     "modelPath": "models/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite", 
-    "zones": [{"area": {"point1": {"x": 0, "y": 0}, "point2": {"x": 0.45, "y": 1}}, "edgeZone": true}, {"area": {"point1": {"x": 0.45, "y": 0}, "point2": {"x": 0.55, "y": 1}}, "edgeZone": false}, {"area": {"point1": {"x": 0.55, "y": 0}, "point2": {"x": 1, "y": 1}}, "edgeZone": true}]}
+    "zones": [{"area": {"point1": {"x": 0, "y": 0}, "point2": {"x": 0.45, "y": 1}}, "edgeZone": true}, {"area": {"point1": {"x": 0.45, "y": 0}, "point2": {"x": 0.55, "y": 1}}, "edgeZone": false}, {"area": {"point1": {"x": 0.55, "y": 0}, "point2": {"x": 1, "y": 1}}, "edgeZone": true}],
+    "acThreshold": 0
+}

@@ -54,6 +54,8 @@ class Config:
         self.cronosUsername: str = ''
         self.cronosPassword: str = ''
 
+        self.acThreshold: float = 0
+
         # fetch full dry config
         self.load_config_from_file(self.dry_config_file_absolute_path)
 
@@ -99,6 +101,10 @@ class Config:
     @property
     def screen_logging_rejection_list(self) -> List[str]:
         return self.screenLoggingRejectionList
+
+    @property
+    def get_ac_threshold(self) -> float:
+        return self.acThreshold
 
     @property
     def platform_api_url(self):

@@ -61,6 +61,7 @@ class Handler(EdgiseBase):
             'pin': 0,
             'type': "INPUT",
             'unit': "mA",
+            'threshold': cfg.
         }
 
         config_json = json.dumps(AC_sensor_config)

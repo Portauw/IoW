@@ -21,6 +21,7 @@ class ACSensor(Process, EdgiseBase):
         self.VCC = 5
         self._config_dict = config_dict
         self._name = self._config_dict['name']
+        self._threshold = self._config_dict['threshold']
         self.adc = ADC()
         self.i2c_lock = resource_lock
 
@@ -57,7 +58,7 @@ class ACSensor(Process, EdgiseBase):
     def run(self) -> None:
         self.info("Starting AC sensor")
         print(self._config_dict['name'])
-        threshold = 4 # not representable value
+        #threshold = 4 # not representable value
 
         while not self._stop_event.is_set():
 
@@ -67,7 +68,7 @@ class ACSensor(Process, EdgiseBase):
             finally:
                 self.i2c_lock.release()
 
-            self.start_washcycle(raw_val, threshold)
+            self.start_washcycle(raw_val, self._threshold)
             self.info("Raw Value: {}".format(raw_val))
             amplitude_current = self.amplitude_current(raw_val)
             self.info("A I Value: {}".format(amplitude_current))
